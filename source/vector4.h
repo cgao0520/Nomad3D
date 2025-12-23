@@ -288,5 +288,4 @@ namespace Nomad3D
 	typedef CVector4	CPoint4;
 };
 
-
 #endif // !defined(VECTOR4_H_A01F0E90_8040_4ACC_8A81_15FF34D69AC1)

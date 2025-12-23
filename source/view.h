@@ -93,6 +93,7 @@ namespace Nomad3D
 		}
 		CViewInfo GetMoveTo(int nStartX, int nStartY)
 		{
+			(void)nStartY;
 			CViewInfo vi(nStartX, nStartX, m_nWidth, m_nHeight, m_rgbClearColor);
 			return vi;
 		}

@@ -8,11 +8,10 @@ BUILD_DIR 	:= build
 
 PROJ_DIR 	:= ./Nomad3DTest_Linux
 NOMAD3D_DIR	:= ./source
-CXXFLAGS += -I$(PROJ_DIR)/include \
-			-I$(NOMAD3D_DIR)
+CXXFLAGS 	+= -I$(PROJ_DIR)/include \
+			   -I$(NOMAD3D_DIR)
 
 EXTRA_CXXFLAGS	:= -fno-strict-aliasing
-
 CXXFLAGS 	+= $(EXTRA_CXXFLAGS)
 
 #---------------------------------------------------------------------------------

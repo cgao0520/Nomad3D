@@ -171,7 +171,7 @@ namespace Nomad3D
 		renderlist.DivideW();
 		renderlist.Sort(enSortByAvgZ);
 #endif
-		int nNumVerts = renderlist.GetNumVerts();
+		//int nNumVerts = renderlist.GetNumVerts();
 		int nNumPolys = renderlist.GetNumPolys();
 		const CVertex4* pVertList = renderlist.GetVertList();
 		//const CPolygon* pPolyList = renderlist.GetPolyList();

@@ -118,11 +118,10 @@ int main(int argc, char* argv[])
 
     GameInit();
 
-    uint16_t* canvas = render.m_canvas.GetCanvas();
+    //uint16_t* canvas = render.m_canvas.GetCanvas();
 
     bool running = true; 
     SDL_Event e;
-    float x_pos = 0.0f;
  
     while (running)
     {
@@ -135,8 +134,6 @@ int main(int argc, char* argv[])
             }
             else if (e.type == SDL_KEYDOWN)
             {
-				static int x=1;
-				static int y=1;
 				static int z=1;
 
 				CCamera* pCamera = scene1.GetCamera();

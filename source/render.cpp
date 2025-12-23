@@ -4637,8 +4637,8 @@ void CRender::TextureGouraudShadingSS(float poly[3][3], unsigned short *buff)
 	int x,y;int xstart,xend;
 	int xs,xe;int ys,ye; //x start, x end, y start, y end
 //	int dx_start=0,dx_end=0;
-	int dr_start=0,dg_start=0,db_start=0;
-	int dr_end=0,dg_end=0,db_end=0;
+//	int dr_start=0,dg_start=0,db_start=0;
+//	int dr_end=0,dg_end=0,db_end=0;
 	int rs,re,gs,ge,bs,be;
 	int dr_x,dg_x,db_x;
 	int r,g,b;
@@ -4687,8 +4687,8 @@ void CRender::TextureGouraudShadingSS(float poly[3][3], unsigned short *buff)
 	int slope_start_sr,slope_start_sg,slope_start_sb;
 	int slope_end_sr,slope_end_sg,slope_end_sb;
 	int sr1,sg1,sb1,sr2,sg2,sb2,sr3,sg3,sb3;
-	int dsr_start=0,dsg_start=0,dsb_start=0;
-	int dsr_end=0,dsg_end=0,dsb_end=0;
+//	int dsr_start=0,dsg_start=0,dsb_start=0;
+//	int dsr_end=0,dsg_end=0,dsb_end=0;
 	int srs,sre,sgs,sge,sbs,sbe;
 	int dsr_x,dsg_x,dsb_x;
 	int sr,sg,sb;
@@ -4697,8 +4697,8 @@ void CRender::TextureGouraudShadingSS(float poly[3][3], unsigned short *buff)
 	int _u1,_u2,_u3,_v1,_v2,_v3;
 	int slope_start_u,slope_start_v;
 	int slope_end_u,slope_end_v;
-	int du_start=0,dv_start=0;
-	int du_end=0,dv_end=0;
+//	int du_start=0,dv_start=0;
+//	int du_end=0,dv_end=0;
 	int du_x,dv_x;
 	int us,ue,vs,ve;
 	int u,v;
@@ -6045,9 +6045,9 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 	int slope_end_r,slope_end_g,slope_end_b;
 	int x,y;int xstart,xend;
 	int xs,xe;int ys,ye; //x start, x end, y start, y end
-	int dx_start=0,dx_end=0;
-	int dr_start=0,dg_start=0,db_start=0;
-	int dr_end=0,dg_end=0,db_end=0;
+//	int dx_start=0,dx_end=0;
+//	int dr_start=0,dg_start=0,db_start=0;
+//	int dr_end=0,dg_end=0,db_end=0;
 	int rs,re,gs,ge,bs,be;
 	int dr_x,dg_x,db_x;
 	int r,g,b;
@@ -6101,8 +6101,8 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 	int slope_start_sr,slope_start_sg,slope_start_sb;
 	int slope_end_sr,slope_end_sg,slope_end_sb;
 	int sr1,sg1,sb1,sr2,sg2,sb2,sr3,sg3,sb3;
-	int dsr_start=0,dsg_start=0,dsb_start=0;
-	int dsr_end=0,dsg_end=0,dsb_end=0;
+//	int dsr_start=0,dsg_start=0,dsb_start=0;
+//	int dsr_end=0,dsg_end=0,dsb_end=0;
 	int srs,sre,sgs,sge,sbs,sbe;
 	int dsr_x,dsg_x,dsb_x;
 	int sr,sg,sb;
@@ -6111,8 +6111,8 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 	int _u1,_u2,_u3,_v1,_v2,_v3;
 	int slope_start_u,slope_start_v;
 	int slope_end_u,slope_end_v;
-	int du_start=0,dv_start=0;
-	int du_end=0,dv_end=0;
+//	int du_start=0,dv_start=0;
+//	int du_end=0,dv_end=0;
 	int du_x,dv_x;
 	int us,ue,vs,ve;
 	int u,v;
@@ -7648,11 +7648,12 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 		int v0=0,
 			v1=1,
 			v2=2,
-			temp=0,
+			//temp=0,
 			tri_type = NM3D_TRI_TYPE_NONE,
 			irestart = NM3D_INTERP_LHS;
 		
-		int dx,dy,dyl,dyr,      // general deltas
+		int //dx,
+			dy,dyl,dyr,      // general deltas
 			xi,yi,              // the current interpolated x,y
 			//		index_x,index_y,    // looping vars
 			//		x,y,                // hold general x,y
@@ -7671,8 +7672,8 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 			x2,y2;
 		
 		unsigned short *screen_ptr  = NULL,
-			*screen_line = NULL,
-			*textmap     = NULL,
+//			*screen_line = NULL,
+//			*textmap     = NULL,
 			*dest_buffer = buff;
 		
 		unsigned short color;    // polygon color
@@ -7737,6 +7738,7 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 			
 		} // end if
 		else
+		{
 			// now test for trivial flat sided cases
 			if (FCMP(poly[v1][1], poly[v2][1]) )
 			{ 
@@ -7754,666 +7756,23 @@ void CRender::TextureGouraudShadingSSZ(float poly[3][3], unsigned short *buff)
 				tri_type = NM3D_TRI_TYPE_GENERAL;
 				
 			} // end else
-			
-			// extract vertices for processing, now that we have order
-			x0  = (int)(poly[v0][0]+0.0);
-			y0  = (int)(poly[v0][1]+0.0);
-			
-			x1  = (int)(poly[v1][0]+0.0);
-			y1  = (int)(poly[v1][1]+0.0);
-			
-			x2  = (int)(poly[v2][0]+0.0);
-			y2  = (int)(poly[v2][1]+0.0);
-			
-			// degenerate triangle
-			if ( ((x0 == x1) && (x1 == x2)) || ((y0 ==  y1) && (y1 == y2)))
-				return;
-			
-			// extract constant color
-			color = m_rgba[0].GetRGB();//0x7f;//RGB555(31,0,0);//face->lit_color[0];
-			
-			// set interpolation restart value
-			yrestart = y1;
-			
-			// what kind of triangle
-			if (tri_type & NM3D_TRI_TYPE_FLAT_MASK)
-			{
-				
-				if (tri_type == NM3D_TRI_TYPE_FLAT_TOP)
-				{
-					// compute all deltas
-					dy = (y2 - y0);
-					
-					dxdyl = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dy;
-					dxdyr = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dy;
-					
-					// test for y clipping
-					if (y0 < min_clip_y)
-					{
-						// compute overclip
-						dy = (min_clip_y - y0);
-						
-						// computer new LHS starting values
-						xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
-						
-						// compute new RHS starting values
-						xr = dxdyr*dy + (x1  << NM3D_FIXP16_SHIFT);
-						
-						// compute new starting y
-						ystart = min_clip_y;
-						
-					} // end if
-					else
-					{
-						// no clipping
-						
-						// set starting values
-						xl = (x0 << NM3D_FIXP16_SHIFT);
-						xr = (x1 << NM3D_FIXP16_SHIFT);
-						
-						// set starting y
-						ystart = y0;
-						
-					} // end else
-					
-				} // end if flat top
-				else
-				{
-					// must be flat bottom
-					
-					// compute all deltas
-					dy = (y1 - y0);
-					
-					dxdyl = ((x1 - x0)   << NM3D_FIXP16_SHIFT)/dy;
-					dxdyr = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dy;
-					
-					// test for y clipping
-					if (y0 < min_clip_y)
-					{
-						// compute overclip
-						dy = (min_clip_y - y0);
-						
-						// computer new LHS starting values
-						xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
-						
-						// compute new RHS starting values
-						xr = dxdyr*dy + (x0  << NM3D_FIXP16_SHIFT);
-						
-						// compute new starting y
-						ystart = min_clip_y;
-						
-					} // end if
-					else
-					{
-						// no clipping
-						
-						// set starting values
-						xl = (x0 << NM3D_FIXP16_SHIFT);
-						xr = (x0 << NM3D_FIXP16_SHIFT);
-						
-						// set starting y
-						ystart = y0;
-						
-					} // end else	
-					
-				} // end else flat bottom
-				
-				// test for bottom clip, always
-				if ((yend = y2) > max_clip_y)
-					yend = max_clip_y;
-				
-				// test for horizontal clipping
-				if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
-					(x1 < min_clip_x) || (x1 > max_clip_x) ||
-					(x2 < min_clip_x) || (x2 > max_clip_x))
-				{
-					// clip version
-					
-					// point screen ptr to starting line
-					screen_ptr = dest_buffer + (ystart * mem_pitch);
-					
-					for (yi = ystart; yi < yend; yi++)
-					{
-						// compute span endpoints
-						xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-						xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-						
-						dx = (xend - xstart);
-						
-						///////////////////////////////////////////////////////////////////////
-						
-						// test for x clipping, LHS
-						if (xstart < min_clip_x)
-						{
-							// compute x overlap
-							dx = min_clip_x - xstart;
-							
-							// reset vars
-							xstart = min_clip_x;
-							
-						} // end if
-						
-						// test for x clipping RHS
-						if (xend > max_clip_x)
-							xend = max_clip_x;
-						
-						///////////////////////////////////////////////////////////////////////
-						
-						// draw span
-						for (xi=xstart; xi < xend; xi++)
-						{
-							// write textel 
-							screen_ptr[xi] = color;
-						} // end for xi
-						//MemSet16(screen_ptr+xi, color, xend-xstart);
-						
-						// interpolate x along right and left edge
-						xl+=dxdyl;
-						xr+=dxdyr;
-						
-						// advance screen ptr
-						screen_ptr+=mem_pitch;
-						
-					} // end for y
-					
-				} // end if clip
-				else
-				{
-					// non-clip version
-					
-					// point screen ptr to starting line
-					screen_ptr = dest_buffer + (ystart * mem_pitch);
-					
-					for (yi = ystart; yi < yend; yi++)
-					{
-						// compute span endpoints
-						xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-						xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-						
-						dx = (xend - xstart);
-						
-						// draw span
-						for (xi=xstart; xi < xend; xi++)
-						{
-							// write textel 
-							screen_ptr[xi] = color;
-						} // end for xi
-						
-						// interpolate x,z along right and left edge
-						xl+=dxdyl;
-						xr+=dxdyr;
-						
-						// advance screen ptr
-						screen_ptr+=mem_pitch;
-						
-					} // end for y
-					
-				} // end if non-clipped
-				
-		} // end if
-		else
-			if (tri_type==NM3D_TRI_TYPE_GENERAL)
-			{
-				
-				// first test for bottom clip, always
-				if ((yend = y2) > max_clip_y)
-					yend = max_clip_y;
-				
-				// pre-test y clipping status
-				if (y1 < min_clip_y)
-				{
-					// compute all deltas
-					// LHS
-					dyl = (y2 - y1);
-					
-					dxdyl = ((x2  - x1)  << NM3D_FIXP16_SHIFT)/dyl;
-					
-					// RHS
-					dyr = (y2 - y0);	
-					
-					dxdyr = ((x2  - x0)  << NM3D_FIXP16_SHIFT)/dyr;
-					
-					// compute overclip
-					dyr = (min_clip_y - y0);
-					dyl = (min_clip_y - y1);
-					
-					// computer new LHS starting values
-					xl = dxdyl*dyl + (x1  << NM3D_FIXP16_SHIFT);
-					
-					// compute new RHS starting values
-					xr = dxdyr*dyr + (x0  << NM3D_FIXP16_SHIFT);
-					
-					// compute new starting y
-					ystart = min_clip_y;
-					
-					// test if we need swap to keep rendering left to right
-					if (dxdyr > dxdyl)
-					{
-						SWAP(dxdyl,dxdyr/*,temp*/);
-						SWAP(xl,xr/*,temp*/);
-						SWAP(x1,x2/*,temp*/);
-						SWAP(y1,y2/*,temp*/);
-						
-						// set interpolation restart
-						irestart = NM3D_INTERP_RHS;
-						
-					} // end if
-					
-				} // end if
-				else
-					if (y0 < min_clip_y)
-					{
-						// compute all deltas
-						// LHS
-						dyl = (y1 - y0);
-						
-						dxdyl = ((x1  - x0)  << NM3D_FIXP16_SHIFT)/dyl;
-						
-						// RHS
-						dyr = (y2 - y0);	
-						
-						dxdyr = ((x2  - x0)  << NM3D_FIXP16_SHIFT)/dyr;
-						
-						// compute overclip
-						dy = (min_clip_y - y0);
-						
-						// computer new LHS starting values
-						xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
-						
-						// compute new RHS starting values
-						xr = dxdyr*dy + (x0  << NM3D_FIXP16_SHIFT);
-						
-						// compute new starting y
-						ystart = min_clip_y;
-						
-						// test if we need swap to keep rendering left to right
-						if (dxdyr < dxdyl)
-						{
-							SWAP(dxdyl,dxdyr/*,temp*/);
-							SWAP(xl,xr/*,temp*/);
-							SWAP(x1,x2/*,temp*/);
-							SWAP(y1,y2/*,temp*/);
-							
-							// set interpolation restart
-							irestart = NM3D_INTERP_RHS;
-							
-						} // end if
-						
-					} // end if
-					else
-					{
-						// no initial y clipping
-						
-						// compute all deltas
-						// LHS
-						dyl = (y1 - y0);
-						
-						dxdyl = ((x1  - x0)  << NM3D_FIXP16_SHIFT)/dyl;
-						
-						// RHS
-						dyr = (y2 - y0);	
-						
-						dxdyr = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dyr;
-						
-						// no clipping y
-						
-						// set starting values
-						xl = (x0 << NM3D_FIXP16_SHIFT);
-						xr = (x0 << NM3D_FIXP16_SHIFT);
-						
-						// set starting y
-						ystart = y0;
-						
-						// test if we need swap to keep rendering left to right
-						if (dxdyr < dxdyl)
-						{
-							SWAP(dxdyl,dxdyr/*,temp*/);
-							SWAP(xl,xr/*,temp*/);
-							SWAP(x1,x2/*,temp*/);
-							SWAP(y1,y2/*,temp*/);
-							
-							// set interpolation restart
-							irestart = NM3D_INTERP_RHS;
-							
-						} // end if
-						
-					} // end else
-					
-					// test for horizontal clipping
-					if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
-						(x1 < min_clip_x) || (x1 > max_clip_x) ||
-						(x2 < min_clip_x) || (x2 > max_clip_x))
-					{
-						// clip version
-						// x clipping	
-						
-						// point screen ptr to starting line
-						screen_ptr = dest_buffer + (ystart * mem_pitch);
-						
-						for (yi = ystart; yi < yend; yi++)
-						{
-							// compute span endpoints
-							xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							
-							dx = (xend - xstart);
-							
-							///////////////////////////////////////////////////////////////////////
-							
-							// test for x clipping, LHS
-							if (xstart < min_clip_x)
-							{
-								// compute x overlap
-								dx = min_clip_x - xstart;
-								
-								// set x to left clip edge
-								xstart = min_clip_x;
-								
-							} // end if
-							
-							// test for x clipping RHS
-							if (xend > max_clip_x)
-								xend = max_clip_x;
-							
-							///////////////////////////////////////////////////////////////////////
-							
-							// draw span
-							for (xi=xstart; xi < xend; xi++)
-							{
-								// write textel assume 5.6.5
-								screen_ptr[xi] = color;
-								
-							} // end for xi
-							
-							// interpolate z,x along right and left edge
-							xl+=dxdyl;
-							xr+=dxdyr;
-							
-							// advance screen ptr
-							screen_ptr+=mem_pitch;
-							
-							// test for yi hitting second region, if so change interpolant
-							if (yi==yrestart)
-							{
-								// test interpolation side change flag
-								
-								if (irestart == NM3D_INTERP_LHS)
-								{
-									// LHS
-									dyl = (y2 - y1);	
-									
-									dxdyl = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dyl;
-									
-									// set starting values
-									xl = (x1  << NM3D_FIXP16_SHIFT);
-									
-									// interpolate down on LHS to even up
-									xl+=dxdyl;
-								} // end if
-								else
-								{
-									// RHS
-									dyr = (y1 - y2);	
-									
-									dxdyr = ((x1 - x2)   << NM3D_FIXP16_SHIFT)/dyr;
-									
-									// set starting values
-									xr = (x2  << NM3D_FIXP16_SHIFT);
-									
-									// interpolate down on RHS to even up
-									xr+=dxdyr;
-									
-								} // end else
-								
-							} // end if
-							
-						} // end for y
-						
-					} // end if
-					else
-					{
-						// no x clipping
-						// point screen ptr to starting line
-						screen_ptr = dest_buffer + (ystart * mem_pitch);
-						
-						for (yi = ystart; yi < yend; yi++)
-						{
-							// compute span endpoints
-							xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							
-							dx = (xend - xstart);
-							
-							// draw span
-							for (xi=xstart; xi < xend; xi++)
-							{
-								// write textel assume 5.6.5
-								screen_ptr[xi] = color;
-							} // end for xi
-							
-							// interpolate x,z along right and left edge
-							xl+=dxdyl;
-							xr+=dxdyr;
-							
-							// advance screen ptr
-							screen_ptr+=mem_pitch;
-							
-							// test for yi hitting second region, if so change interpolant
-							if (yi==yrestart)
-							{
-								// test interpolation side change flag
-								
-								if (irestart == NM3D_INTERP_LHS)
-								{
-									// LHS
-									dyl = (y2 - y1);	
-									
-									dxdyl = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dyl;
-									
-									// set starting values
-									xl = (x1  << NM3D_FIXP16_SHIFT);
-									
-									// interpolate down on LHS to even up
-									xl+=dxdyl;
-								} // end if
-								else
-								{
-									// RHS
-									dyr = (y1 - y2);	
-									
-									dxdyr = ((x1 - x2)   << NM3D_FIXP16_SHIFT)/dyr;
-									
-									// set starting values
-									xr = (x2  << NM3D_FIXP16_SHIFT);
-									
-									// interpolate down on RHS to even up
-									xr+=dxdyr;
-								} // end else
-								
-							} // end if
-							
-						} // end for y
-						
-					} // end else	
-					
-			} // end if
-			
-	} // end Draw_Triangle_2D3_16
-#endif
-
-
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_buffer)
-{
-	// this function draws a gouraud shaded polygon, based on the affine texture mapper, instead
-	// of interpolating the texture coordinates, we simply interpolate the (R,G,B) values across
-	// the polygons, I simply needed at another interpolant, I have mapped u->red, v->green, w->blue
-	int mem_pitch = m_nMemPitch;
-	int v0=0,
-		v1=1,
-		v2=2,
-		temp=0,
-		tri_type = NM3D_TRI_TYPE_NONE,
-		irestart = NM3D_INTERP_LHS;
-
-	int dx,dy,dyl,dyr,      // general deltas
-//		u,v,w,
-		du,dv,dw,
-		xi,yi,              // the current interpolated x,y
-		ui,vi,wi,           // the current interpolated u,v
-//		index_x,index_y,    // looping vars
-//		x,y,                // hold general x,y
-		xstart,
-		xend,
-		ystart,
-		yrestart,
-		yend,
-		xl,                 
-		dxdyl,              
-		xr,
-		dxdyr,             
-		dudyl,    
-		ul,
-		dvdyl,   
-		vl,
-		dwdyl,   
-		wl,
-		dudyr,
-		ur,
-		dvdyr,
-		vr,
-		dwdyr,
-		wr;
-
-	int x0,y0,tu0,tv0,tw0,    // cached vertices
-		x1,y1,tu1,tv1,tw1,
-		x2,y2,tu2,tv2,tw2;
-
-	int r_base0, g_base0, b_base0,
-		r_base1, g_base1, b_base1,
-		r_base2, g_base2, b_base2;
-
-	USHORT *screen_ptr  = NULL,
-		*screen_line = NULL,
-		*textmap     = NULL,
-		*dest_buffer = (USHORT *)_dest_buffer;
-
-#ifdef DEBUG_ON
-	// track rendering stats
-	debug_polys_rendered_per_frame++;
-#endif
-
-	// adjust memory pitch to words, divide by 2
-	mem_pitch >>=1;
-
-	// apply fill convention to coordinates
-	poly[0][0] = (int)(poly[0][0]+0.0);
-	poly[0][1] = (int)(poly[0][1]+0.0);
-
-	poly[1][0] = (int)(poly[1][0]+0.0);
-	poly[1][1] = (int)(poly[1][1]+0.0);
-
-	poly[2][0] = (int)(poly[2][0]+0.0);
-	poly[2][1] = (int)(poly[2][1]+0.0);
-
-	// first trivial clipping rejection tests 
-	if (((poly[0][1] < min_clip_y)  && 
-		(poly[1][1] < min_clip_y)  &&
-		(poly[2][1] < min_clip_y)) ||
-
-		((poly[0][1] > max_clip_y)  && 
-		(poly[1][1] > max_clip_y)  &&
-		(poly[2][1] > max_clip_y)) ||
-
-		((poly[0][0] < min_clip_x)  && 
-		(poly[1][0] < min_clip_x)  &&
-		(poly[2][0] < min_clip_x)) ||
-
-		((poly[0][0] > max_clip_x)  && 
-		(poly[1][0] > max_clip_x)  &&
-		(poly[2][0] > max_clip_x)))
-		return;
-
-	// sort vertices
-	if (poly[v1][1] < poly[v0][1]) 
-	{SWAP(v0,v1/*,temp*/);} 
-
-	if (poly[v2][1] < poly[v0][1]) 
-	{SWAP(v0,v2/*,temp*/);}
-
-	if (poly[v2][1] < poly[v1][1]) 
-	{SWAP(v1,v2/*,temp*/);}
-
-	// now test for trivial flat sided cases
-	if (FCMP(poly[v0][1], poly[v1][1]) )
-	{ 
-		// set triangle type
-		tri_type = NM3D_TRI_TYPE_FLAT_TOP;
-
-		// sort vertices left to right
-		if (poly[v1][0] < poly[v0][0]) 
-		{SWAP(v0,v1/*,temp*/);}
-
-	} // end if
-	else
-		// now test for trivial flat sided cases
-		if (FCMP(poly[v1][1], poly[v2][1]) )
-		{ 
-			// set triangle type
-			tri_type = NM3D_TRI_TYPE_FLAT_BOTTOM;
-
-			// sort vertices left to right
-			if (poly[v2][0] < poly[v1][0]) 
-			{SWAP(v1,v2/*,temp*/);}
-
-		} // end if
-		else
-		{
-			// must be a general triangle
-			tri_type = NM3D_TRI_TYPE_GENERAL;
-
-		} // end else
-
-		// assume 5.6.5 format -- sorry!
-		// we can't afford a function call in the inner loops, so we must write 
-		// two hard coded versions, if we want support for both 5.6.5, and 5.5.5
-
-//		_RGB555FROM16BIT(face->lit_color[v0], &r_base0, &g_base0, &b_base0);
-		m_rgba[v0].GetRGBValuec(r_base0, g_base0, b_base0);
-//		_RGB555FROM16BIT(face->lit_color[v1], &r_base1, &g_base1, &b_base1);
-		m_rgba[v1].GetRGBValuec(r_base1, g_base1, b_base1);
-//		_RGB555FROM16BIT(face->lit_color[v2], &r_base2, &g_base2, &b_base2);
-		m_rgba[v2].GetRGBValuec(r_base2, g_base2, b_base2);
-
+		}
 		// extract vertices for processing, now that we have order
-		x0  = (int)(poly[v0][0]+0.0);
-		y0  = (int)(poly[v0][1]+0.0);
+		x0 = (int)(poly[v0][0] + 0.0);
+		y0 = (int)(poly[v0][1] + 0.0);
 
-		tu0 = r_base0;
-		tv0 = g_base0; 
-		tw0 = b_base0; 
+		x1 = (int)(poly[v1][0] + 0.0);
+		y1 = (int)(poly[v1][1] + 0.0);
 
-		x1  = (int)(poly[v1][0]+0.0);
-		y1  = (int)(poly[v1][1]+0.0);
-
-		tu1 = r_base1;
-		tv1 = g_base1; 
-		tw1 = b_base1; 
-
-		x2  = (int)(poly[v2][0]+0.0);
-		y2  = (int)(poly[v2][1]+0.0);
-
-		tu2 = r_base2; 
-		tv2 = g_base2; 
-		tw2 = b_base2; 
-
+		x2 = (int)(poly[v2][0] + 0.0);
+		y2 = (int)(poly[v2][1] + 0.0);
 
 		// degenerate triangle
-		if ( ((x0 == x1) && (x1 == x2)) || ((y0 ==  y1) && (y1 == y2)))
+		if (((x0 == x1) && (x1 == x2)) || ((y0 == y1) && (y1 == y2)))
 			return;
+
+		// extract constant color
+		color = m_rgba[0].GetRGB(); // 0x7f;//RGB555(31,0,0);//face->lit_color[0];
 
 		// set interpolation restart value
 		yrestart = y1;
@@ -8427,15 +7786,8 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 				// compute all deltas
 				dy = (y2 - y0);
 
-				dxdyl = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dy;
-				dudyl = ((tu2 - tu0) << NM3D_FIXP16_SHIFT)/dy;  
-				dvdyl = ((tv2 - tv0) << NM3D_FIXP16_SHIFT)/dy;    
-				dwdyl = ((tw2 - tw0) << NM3D_FIXP16_SHIFT)/dy;  
-
-				dxdyr = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dy;
-				dudyr = ((tu2 - tu1) << NM3D_FIXP16_SHIFT)/dy;  
-				dvdyr = ((tv2 - tv1) << NM3D_FIXP16_SHIFT)/dy;   
-				dwdyr = ((tw2 - tw1) << NM3D_FIXP16_SHIFT)/dy;   
+				dxdyl = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dy;
+				dxdyr = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dy;
 
 				// test for y clipping
 				if (y0 < min_clip_y)
@@ -8444,16 +7796,10 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					dy = (min_clip_y - y0);
 
 					// computer new LHS starting values
-					xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
-					ul = dudyl*dy + (tu0 << NM3D_FIXP16_SHIFT);
-					vl = dvdyl*dy + (tv0 << NM3D_FIXP16_SHIFT);
-					wl = dwdyl*dy + (tw0 << NM3D_FIXP16_SHIFT);
+					xl = dxdyl * dy + (x0 << NM3D_FIXP16_SHIFT);
 
 					// compute new RHS starting values
-					xr = dxdyr*dy + (x1  << NM3D_FIXP16_SHIFT);
-					ur = dudyr*dy + (tu1 << NM3D_FIXP16_SHIFT);
-					vr = dvdyr*dy + (tv1 << NM3D_FIXP16_SHIFT);
-					wr = dwdyr*dy + (tw1 << NM3D_FIXP16_SHIFT);
+					xr = dxdyr * dy + (x1 << NM3D_FIXP16_SHIFT);
 
 					// compute new starting y
 					ystart = min_clip_y;
@@ -8466,14 +7812,6 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					// set starting values
 					xl = (x0 << NM3D_FIXP16_SHIFT);
 					xr = (x1 << NM3D_FIXP16_SHIFT);
-
-					ul = (tu0 << NM3D_FIXP16_SHIFT);
-					vl = (tv0 << NM3D_FIXP16_SHIFT);
-					wl = (tw0 << NM3D_FIXP16_SHIFT);
-
-					ur = (tu1 << NM3D_FIXP16_SHIFT);
-					vr = (tv1 << NM3D_FIXP16_SHIFT);
-					wr = (tw1 << NM3D_FIXP16_SHIFT);
 
 					// set starting y
 					ystart = y0;
@@ -8488,15 +7826,8 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 				// compute all deltas
 				dy = (y1 - y0);
 
-				dxdyl = ((x1 - x0)   << NM3D_FIXP16_SHIFT)/dy;
-				dudyl = ((tu1 - tu0) << NM3D_FIXP16_SHIFT)/dy;  
-				dvdyl = ((tv1 - tv0) << NM3D_FIXP16_SHIFT)/dy;    
-				dwdyl = ((tw1 - tw0) << NM3D_FIXP16_SHIFT)/dy; 
-
-				dxdyr = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dy;
-				dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT)/dy;  
-				dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT)/dy;   
-				dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT)/dy;   
+				dxdyl = ((x1 - x0) << NM3D_FIXP16_SHIFT) / dy;
+				dxdyr = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dy;
 
 				// test for y clipping
 				if (y0 < min_clip_y)
@@ -8505,16 +7836,10 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					dy = (min_clip_y - y0);
 
 					// computer new LHS starting values
-					xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
-					ul = dudyl*dy + (tu0 << NM3D_FIXP16_SHIFT);
-					vl = dvdyl*dy + (tv0 << NM3D_FIXP16_SHIFT);
-					wl = dwdyl*dy + (tw0 << NM3D_FIXP16_SHIFT);
+					xl = dxdyl * dy + (x0 << NM3D_FIXP16_SHIFT);
 
 					// compute new RHS starting values
-					xr = dxdyr*dy + (x0  << NM3D_FIXP16_SHIFT);
-					ur = dudyr*dy + (tu0 << NM3D_FIXP16_SHIFT);
-					vr = dvdyr*dy + (tv0 << NM3D_FIXP16_SHIFT);
-					wr = dwdyr*dy + (tw0 << NM3D_FIXP16_SHIFT);
+					xr = dxdyr * dy + (x0 << NM3D_FIXP16_SHIFT);
 
 					// compute new starting y
 					ystart = min_clip_y;
@@ -8528,18 +7853,10 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					xl = (x0 << NM3D_FIXP16_SHIFT);
 					xr = (x0 << NM3D_FIXP16_SHIFT);
 
-					ul = (tu0 << NM3D_FIXP16_SHIFT);
-					vl = (tv0 << NM3D_FIXP16_SHIFT);
-					wl = (tw0 << NM3D_FIXP16_SHIFT);
-
-					ur = (tu0 << NM3D_FIXP16_SHIFT);
-					vr = (tv0 << NM3D_FIXP16_SHIFT);
-					wr = (tw0 << NM3D_FIXP16_SHIFT);
-
 					// set starting y
 					ystart = y0;
 
-				} // end else	
+				} // end else
 
 			} // end else flat bottom
 
@@ -8561,7 +7878,1062 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 				{
 					// compute span endpoints
 					xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-					xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+					xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+
+					//dx = (xend - xstart);
+
+					///////////////////////////////////////////////////////////////////////
+
+					// test for x clipping, LHS
+					if (xstart < min_clip_x)
+					{
+						// compute x overlap
+						//dx = min_clip_x - xstart;
+
+						// reset vars
+						xstart = min_clip_x;
+
+					} // end if
+
+					// test for x clipping RHS
+					if (xend > max_clip_x)
+						xend = max_clip_x;
+
+					///////////////////////////////////////////////////////////////////////
+
+					// draw span
+					for (xi = xstart; xi < xend; xi++)
+					{
+						// write textel
+						screen_ptr[xi] = color;
+					} // end for xi
+					// MemSet16(screen_ptr+xi, color, xend-xstart);
+
+					// interpolate x along right and left edge
+					xl += dxdyl;
+					xr += dxdyr;
+
+					// advance screen ptr
+					screen_ptr += mem_pitch;
+
+				} // end for y
+
+			} // end if clip
+			else
+			{
+				// non-clip version
+
+				// point screen ptr to starting line
+				screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+				for (yi = ystart; yi < yend; yi++)
+				{
+					// compute span endpoints
+					xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+					xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+
+					//dx = (xend - xstart);
+
+					// draw span
+					for (xi = xstart; xi < xend; xi++)
+					{
+						// write textel
+						screen_ptr[xi] = color;
+					} // end for xi
+
+					// interpolate x,z along right and left edge
+					xl += dxdyl;
+					xr += dxdyr;
+
+					// advance screen ptr
+					screen_ptr += mem_pitch;
+
+				} // end for y
+
+			} // end if non-clipped
+
+		} // end if
+		else
+		{
+			if (tri_type==NM3D_TRI_TYPE_GENERAL)
+			{
+				
+				// first test for bottom clip, always
+				if ((yend = y2) > max_clip_y)
+					yend = max_clip_y;
+				
+				// pre-test y clipping status
+				if (y1 < min_clip_y)
+				{
+					// compute all deltas
+					// LHS
+					dyl = (y2 - y1);
+					
+					dxdyl = ((x2  - x1)  << NM3D_FIXP16_SHIFT)/dyl;
+					
+					// RHS
+					dyr = (y2 - y0);	
+					
+					dxdyr = ((x2  - x0)  << NM3D_FIXP16_SHIFT)/dyr;
+					
+					// compute overclip
+					dyr = (min_clip_y - y0);
+					dyl = (min_clip_y - y1);
+					
+					// computer new LHS starting values
+					xl = dxdyl*dyl + (x1  << NM3D_FIXP16_SHIFT);
+					
+					// compute new RHS starting values
+					xr = dxdyr*dyr + (x0  << NM3D_FIXP16_SHIFT);
+					
+					// compute new starting y
+					ystart = min_clip_y;
+					
+					// test if we need swap to keep rendering left to right
+					if (dxdyr > dxdyl)
+					{
+						SWAP(dxdyl,dxdyr/*,temp*/);
+						SWAP(xl,xr/*,temp*/);
+						SWAP(x1,x2/*,temp*/);
+						SWAP(y1,y2/*,temp*/);
+						
+						// set interpolation restart
+						irestart = NM3D_INTERP_RHS;
+						
+					} // end if
+					
+				} // end if
+				else
+				{
+					if (y0 < min_clip_y)
+					{
+						// compute all deltas
+						// LHS
+						dyl = (y1 - y0);
+						
+						dxdyl = ((x1  - x0)  << NM3D_FIXP16_SHIFT)/dyl;
+						
+						// RHS
+						dyr = (y2 - y0);	
+						
+						dxdyr = ((x2  - x0)  << NM3D_FIXP16_SHIFT)/dyr;
+						
+						// compute overclip
+						dy = (min_clip_y - y0);
+						
+						// computer new LHS starting values
+						xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
+						
+						// compute new RHS starting values
+						xr = dxdyr*dy + (x0  << NM3D_FIXP16_SHIFT);
+						
+						// compute new starting y
+						ystart = min_clip_y;
+						
+						// test if we need swap to keep rendering left to right
+						if (dxdyr < dxdyl)
+						{
+							SWAP(dxdyl,dxdyr/*,temp*/);
+							SWAP(xl,xr/*,temp*/);
+							SWAP(x1,x2/*,temp*/);
+							SWAP(y1,y2/*,temp*/);
+							
+							// set interpolation restart
+							irestart = NM3D_INTERP_RHS;
+							
+						} // end if
+						
+					} // end if
+					else
+					{
+						// no initial y clipping
+						
+						// compute all deltas
+						// LHS
+						dyl = (y1 - y0);
+						
+						dxdyl = ((x1  - x0)  << NM3D_FIXP16_SHIFT)/dyl;
+						
+						// RHS
+						dyr = (y2 - y0);	
+						
+						dxdyr = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dyr;
+						
+						// no clipping y
+						
+						// set starting values
+						xl = (x0 << NM3D_FIXP16_SHIFT);
+						xr = (x0 << NM3D_FIXP16_SHIFT);
+						
+						// set starting y
+						ystart = y0;
+						
+						// test if we need swap to keep rendering left to right
+						if (dxdyr < dxdyl)
+						{
+							SWAP(dxdyl,dxdyr/*,temp*/);
+							SWAP(xl,xr/*,temp*/);
+							SWAP(x1,x2/*,temp*/);
+							SWAP(y1,y2/*,temp*/);
+							
+							// set interpolation restart
+							irestart = NM3D_INTERP_RHS;
+							
+						} // end if
+						
+					} // end else
+				}
+
+				// test for horizontal clipping
+				if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
+					(x1 < min_clip_x) || (x1 > max_clip_x) ||
+					(x2 < min_clip_x) || (x2 > max_clip_x))
+				{
+					// clip version
+					// x clipping
+
+					// point screen ptr to starting line
+					screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+					for (yi = ystart; yi < yend; yi++)
+					{
+						// compute span endpoints
+						xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+						xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+
+						//dx = (xend - xstart);
+
+						///////////////////////////////////////////////////////////////////////
+
+						// test for x clipping, LHS
+						if (xstart < min_clip_x)
+						{
+							// compute x overlap
+							//dx = min_clip_x - xstart;
+
+							// set x to left clip edge
+							xstart = min_clip_x;
+
+						} // end if
+
+						// test for x clipping RHS
+						if (xend > max_clip_x)
+							xend = max_clip_x;
+
+						///////////////////////////////////////////////////////////////////////
+
+						// draw span
+						for (xi = xstart; xi < xend; xi++)
+						{
+							// write textel assume 5.6.5
+							screen_ptr[xi] = color;
+
+						} // end for xi
+
+						// interpolate z,x along right and left edge
+						xl += dxdyl;
+						xr += dxdyr;
+
+						// advance screen ptr
+						screen_ptr += mem_pitch;
+
+						// test for yi hitting second region, if so change interpolant
+						if (yi == yrestart)
+						{
+							// test interpolation side change flag
+
+							if (irestart == NM3D_INTERP_LHS)
+							{
+								// LHS
+								dyl = (y2 - y1);
+
+								dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+
+								// set starting values
+								xl = (x1 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on LHS to even up
+								xl += dxdyl;
+							} // end if
+							else
+							{
+								// RHS
+								dyr = (y1 - y2);
+
+								dxdyr = ((x1 - x2) << NM3D_FIXP16_SHIFT) / dyr;
+
+								// set starting values
+								xr = (x2 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on RHS to even up
+								xr += dxdyr;
+
+							} // end else
+
+						} // end if
+
+					} // end for y
+
+				} // end if
+				else
+				{
+					// no x clipping
+					// point screen ptr to starting line
+					screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+					for (yi = ystart; yi < yend; yi++)
+					{
+						// compute span endpoints
+						xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+						xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+
+						//dx = (xend - xstart);
+
+						// draw span
+						for (xi = xstart; xi < xend; xi++)
+						{
+							// write textel assume 5.6.5
+							screen_ptr[xi] = color;
+						} // end for xi
+
+						// interpolate x,z along right and left edge
+						xl += dxdyl;
+						xr += dxdyr;
+
+						// advance screen ptr
+						screen_ptr += mem_pitch;
+
+						// test for yi hitting second region, if so change interpolant
+						if (yi == yrestart)
+						{
+							// test interpolation side change flag
+
+							if (irestart == NM3D_INTERP_LHS)
+							{
+								// LHS
+								dyl = (y2 - y1);
+
+								dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+
+								// set starting values
+								xl = (x1 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on LHS to even up
+								xl += dxdyl;
+							} // end if
+							else
+							{
+								// RHS
+								dyr = (y1 - y2);
+
+								dxdyr = ((x1 - x2) << NM3D_FIXP16_SHIFT) / dyr;
+
+								// set starting values
+								xr = (x2 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on RHS to even up
+								xr += dxdyr;
+							} // end else
+
+						} // end if
+
+					} // end for y
+
+				} // end else
+
+			} // end if
+		}
+	} // end Draw_Triangle_2D3_16
+#endif
+
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_buffer)
+{
+	// this function draws a gouraud shaded polygon, based on the affine texture mapper, instead
+	// of interpolating the texture coordinates, we simply interpolate the (R,G,B) values across
+	// the polygons, I simply needed at another interpolant, I have mapped u->red, v->green, w->blue
+	int mem_pitch = m_nMemPitch;
+	int v0 = 0,
+		v1 = 1,
+		v2 = 2,
+		//temp = 0,
+		tri_type = NM3D_TRI_TYPE_NONE,
+		irestart = NM3D_INTERP_LHS;
+
+	int dx, dy, dyl, dyr, // general deltas
+						  //		u,v,w,
+		du, dv, dw,
+		xi, yi,		// the current interpolated x,y
+		ui, vi, wi, // the current interpolated u,v
+					//		index_x,index_y,    // looping vars
+					//		x,y,                // hold general x,y
+		xstart,
+		xend,
+		ystart,
+		yrestart,
+		yend,
+		xl,
+		dxdyl,
+		xr,
+		dxdyr,
+		dudyl,
+		ul,
+		dvdyl,
+		vl,
+		dwdyl,
+		wl,
+		dudyr,
+		ur,
+		dvdyr,
+		vr,
+		dwdyr,
+		wr;
+
+	int x0, y0, tu0, tv0, tw0, // cached vertices
+		x1, y1, tu1, tv1, tw1,
+		x2, y2, tu2, tv2, tw2;
+
+	int r_base0, g_base0, b_base0,
+		r_base1, g_base1, b_base1,
+		r_base2, g_base2, b_base2;
+
+	USHORT *screen_ptr = NULL,
+		   //*screen_line = NULL,
+		   //*textmap = NULL,
+		   *dest_buffer = (USHORT *)_dest_buffer;
+
+#ifdef DEBUG_ON
+	// track rendering stats
+	debug_polys_rendered_per_frame++;
+#endif
+
+	// adjust memory pitch to words, divide by 2
+	mem_pitch >>= 1;
+
+	// apply fill convention to coordinates
+	poly[0][0] = (int)(poly[0][0] + 0.0);
+	poly[0][1] = (int)(poly[0][1] + 0.0);
+
+	poly[1][0] = (int)(poly[1][0] + 0.0);
+	poly[1][1] = (int)(poly[1][1] + 0.0);
+
+	poly[2][0] = (int)(poly[2][0] + 0.0);
+	poly[2][1] = (int)(poly[2][1] + 0.0);
+
+	// first trivial clipping rejection tests
+	if (((poly[0][1] < min_clip_y) &&
+		 (poly[1][1] < min_clip_y) &&
+		 (poly[2][1] < min_clip_y)) ||
+
+		((poly[0][1] > max_clip_y) &&
+		 (poly[1][1] > max_clip_y) &&
+		 (poly[2][1] > max_clip_y)) ||
+
+		((poly[0][0] < min_clip_x) &&
+		 (poly[1][0] < min_clip_x) &&
+		 (poly[2][0] < min_clip_x)) ||
+
+		((poly[0][0] > max_clip_x) &&
+		 (poly[1][0] > max_clip_x) &&
+		 (poly[2][0] > max_clip_x)))
+		return;
+
+	// sort vertices
+	if (poly[v1][1] < poly[v0][1])
+	{
+		SWAP(v0, v1 /*,temp*/);
+	}
+
+	if (poly[v2][1] < poly[v0][1])
+	{
+		SWAP(v0, v2 /*,temp*/);
+	}
+
+	if (poly[v2][1] < poly[v1][1])
+	{
+		SWAP(v1, v2 /*,temp*/);
+	}
+
+	// now test for trivial flat sided cases
+	if (FCMP(poly[v0][1], poly[v1][1]))
+	{
+		// set triangle type
+		tri_type = NM3D_TRI_TYPE_FLAT_TOP;
+
+		// sort vertices left to right
+		if (poly[v1][0] < poly[v0][0])
+		{
+			SWAP(v0, v1 /*,temp*/);
+		}
+
+	} // end if
+	else
+		// now test for trivial flat sided cases
+		if (FCMP(poly[v1][1], poly[v2][1]))
+		{
+			// set triangle type
+			tri_type = NM3D_TRI_TYPE_FLAT_BOTTOM;
+
+			// sort vertices left to right
+			if (poly[v2][0] < poly[v1][0])
+			{
+				SWAP(v1, v2 /*,temp*/);
+			}
+
+		} // end if
+		else
+		{
+			// must be a general triangle
+			tri_type = NM3D_TRI_TYPE_GENERAL;
+
+		} // end else
+
+	// assume 5.6.5 format -- sorry!
+	// we can't afford a function call in the inner loops, so we must write
+	// two hard coded versions, if we want support for both 5.6.5, and 5.5.5
+
+	//		_RGB555FROM16BIT(face->lit_color[v0], &r_base0, &g_base0, &b_base0);
+	m_rgba[v0].GetRGBValuec(r_base0, g_base0, b_base0);
+	//		_RGB555FROM16BIT(face->lit_color[v1], &r_base1, &g_base1, &b_base1);
+	m_rgba[v1].GetRGBValuec(r_base1, g_base1, b_base1);
+	//		_RGB555FROM16BIT(face->lit_color[v2], &r_base2, &g_base2, &b_base2);
+	m_rgba[v2].GetRGBValuec(r_base2, g_base2, b_base2);
+
+	// extract vertices for processing, now that we have order
+	x0 = (int)(poly[v0][0] + 0.0);
+	y0 = (int)(poly[v0][1] + 0.0);
+
+	tu0 = r_base0;
+	tv0 = g_base0;
+	tw0 = b_base0;
+
+	x1 = (int)(poly[v1][0] + 0.0);
+	y1 = (int)(poly[v1][1] + 0.0);
+
+	tu1 = r_base1;
+	tv1 = g_base1;
+	tw1 = b_base1;
+
+	x2 = (int)(poly[v2][0] + 0.0);
+	y2 = (int)(poly[v2][1] + 0.0);
+
+	tu2 = r_base2;
+	tv2 = g_base2;
+	tw2 = b_base2;
+
+	// degenerate triangle
+	if (((x0 == x1) && (x1 == x2)) || ((y0 == y1) && (y1 == y2)))
+		return;
+
+	// set interpolation restart value
+	yrestart = y1;
+
+	// what kind of triangle
+	if (tri_type & NM3D_TRI_TYPE_FLAT_MASK)
+	{
+
+		if (tri_type == NM3D_TRI_TYPE_FLAT_TOP)
+		{
+			// compute all deltas
+			dy = (y2 - y0);
+
+			dxdyl = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dy;
+			dudyl = ((tu2 - tu0) << NM3D_FIXP16_SHIFT) / dy;
+			dvdyl = ((tv2 - tv0) << NM3D_FIXP16_SHIFT) / dy;
+			dwdyl = ((tw2 - tw0) << NM3D_FIXP16_SHIFT) / dy;
+
+			dxdyr = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dy;
+			dudyr = ((tu2 - tu1) << NM3D_FIXP16_SHIFT) / dy;
+			dvdyr = ((tv2 - tv1) << NM3D_FIXP16_SHIFT) / dy;
+			dwdyr = ((tw2 - tw1) << NM3D_FIXP16_SHIFT) / dy;
+
+			// test for y clipping
+			if (y0 < min_clip_y)
+			{
+				// compute overclip
+				dy = (min_clip_y - y0);
+
+				// computer new LHS starting values
+				xl = dxdyl * dy + (x0 << NM3D_FIXP16_SHIFT);
+				ul = dudyl * dy + (tu0 << NM3D_FIXP16_SHIFT);
+				vl = dvdyl * dy + (tv0 << NM3D_FIXP16_SHIFT);
+				wl = dwdyl * dy + (tw0 << NM3D_FIXP16_SHIFT);
+
+				// compute new RHS starting values
+				xr = dxdyr * dy + (x1 << NM3D_FIXP16_SHIFT);
+				ur = dudyr * dy + (tu1 << NM3D_FIXP16_SHIFT);
+				vr = dvdyr * dy + (tv1 << NM3D_FIXP16_SHIFT);
+				wr = dwdyr * dy + (tw1 << NM3D_FIXP16_SHIFT);
+
+				// compute new starting y
+				ystart = min_clip_y;
+
+			} // end if
+			else
+			{
+				// no clipping
+
+				// set starting values
+				xl = (x0 << NM3D_FIXP16_SHIFT);
+				xr = (x1 << NM3D_FIXP16_SHIFT);
+
+				ul = (tu0 << NM3D_FIXP16_SHIFT);
+				vl = (tv0 << NM3D_FIXP16_SHIFT);
+				wl = (tw0 << NM3D_FIXP16_SHIFT);
+
+				ur = (tu1 << NM3D_FIXP16_SHIFT);
+				vr = (tv1 << NM3D_FIXP16_SHIFT);
+				wr = (tw1 << NM3D_FIXP16_SHIFT);
+
+				// set starting y
+				ystart = y0;
+
+			} // end else
+
+		} // end if flat top
+		else
+		{
+			// must be flat bottom
+
+			// compute all deltas
+			dy = (y1 - y0);
+
+			dxdyl = ((x1 - x0) << NM3D_FIXP16_SHIFT) / dy;
+			dudyl = ((tu1 - tu0) << NM3D_FIXP16_SHIFT) / dy;
+			dvdyl = ((tv1 - tv0) << NM3D_FIXP16_SHIFT) / dy;
+			dwdyl = ((tw1 - tw0) << NM3D_FIXP16_SHIFT) / dy;
+
+			dxdyr = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dy;
+			dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT) / dy;
+			dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT) / dy;
+			dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT) / dy;
+
+			// test for y clipping
+			if (y0 < min_clip_y)
+			{
+				// compute overclip
+				dy = (min_clip_y - y0);
+
+				// computer new LHS starting values
+				xl = dxdyl * dy + (x0 << NM3D_FIXP16_SHIFT);
+				ul = dudyl * dy + (tu0 << NM3D_FIXP16_SHIFT);
+				vl = dvdyl * dy + (tv0 << NM3D_FIXP16_SHIFT);
+				wl = dwdyl * dy + (tw0 << NM3D_FIXP16_SHIFT);
+
+				// compute new RHS starting values
+				xr = dxdyr * dy + (x0 << NM3D_FIXP16_SHIFT);
+				ur = dudyr * dy + (tu0 << NM3D_FIXP16_SHIFT);
+				vr = dvdyr * dy + (tv0 << NM3D_FIXP16_SHIFT);
+				wr = dwdyr * dy + (tw0 << NM3D_FIXP16_SHIFT);
+
+				// compute new starting y
+				ystart = min_clip_y;
+
+			} // end if
+			else
+			{
+				// no clipping
+
+				// set starting values
+				xl = (x0 << NM3D_FIXP16_SHIFT);
+				xr = (x0 << NM3D_FIXP16_SHIFT);
+
+				ul = (tu0 << NM3D_FIXP16_SHIFT);
+				vl = (tv0 << NM3D_FIXP16_SHIFT);
+				wl = (tw0 << NM3D_FIXP16_SHIFT);
+
+				ur = (tu0 << NM3D_FIXP16_SHIFT);
+				vr = (tv0 << NM3D_FIXP16_SHIFT);
+				wr = (tw0 << NM3D_FIXP16_SHIFT);
+
+				// set starting y
+				ystart = y0;
+
+			} // end else
+
+		} // end else flat bottom
+
+		// test for bottom clip, always
+		if ((yend = y2) > max_clip_y)
+			yend = max_clip_y;
+
+		// test for horizontal clipping
+		if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
+			(x1 < min_clip_x) || (x1 > max_clip_x) ||
+			(x2 < min_clip_x) || (x2 > max_clip_x))
+		{
+			// clip version
+
+			// point screen ptr to starting line
+			screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+			for (yi = ystart; yi < yend; yi++)
+			{
+				// compute span endpoints
+				xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+				xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+
+				// compute starting points for u,v,w interpolants
+				ui = ul + NM3D_FIXP16_ROUND_UP;
+				vi = vl + NM3D_FIXP16_ROUND_UP;
+				wi = wl + NM3D_FIXP16_ROUND_UP;
+
+				// compute u,v interpolants
+				if ((dx = (xend - xstart)) > 0)
+				{
+					du = (ur - ul) / dx;
+					dv = (vr - vl) / dx;
+					dw = (wr - wl) / dx;
+				} // end if
+				else
+				{
+					du = (ur - ul);
+					dv = (vr - vl);
+					dw = (wr - wl);
+				} // end else
+
+				///////////////////////////////////////////////////////////////////////
+
+				// test for x clipping, LHS
+				if (xstart < min_clip_x)
+				{
+					// compute x overlap
+					dx = min_clip_x - xstart;
+
+					// slide interpolants over
+					ui += dx * du;
+					vi += dx * dv;
+					wi += dx * dw;
+
+					// reset vars
+					xstart = min_clip_x;
+
+				} // end if
+
+				// test for x clipping RHS
+				if (xend > max_clip_x)
+					xend = max_clip_x;
+
+				///////////////////////////////////////////////////////////////////////
+
+				// draw span
+				for (xi = xstart; xi < xend; xi++)
+				{
+					// write textel assume 5.6.5
+#ifdef NM3D_PIXELFORMAT_565
+					screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT + 2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
+#else
+					screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT + 3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
+#endif
+					// screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
+					//  interpolate u,v
+					ui += du;
+					vi += dv;
+					wi += dw;
+				} // end for xi
+
+				// interpolate u,v,w,x along right and left edge
+				xl += dxdyl;
+				ul += dudyl;
+				vl += dvdyl;
+				wl += dwdyl;
+
+				xr += dxdyr;
+				ur += dudyr;
+				vr += dvdyr;
+				wr += dwdyr;
+
+				// advance screen ptr
+				screen_ptr += mem_pitch;
+
+			} // end for y
+
+		} // end if clip
+		else
+		{
+			// non-clip version
+
+			// point screen ptr to starting line
+			screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+			for (yi = ystart; yi < yend; yi++)
+			{
+				// compute span endpoints
+				xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+				xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+
+				// compute starting points for u,v,w interpolants
+				ui = ul + NM3D_FIXP16_ROUND_UP;
+				vi = vl + NM3D_FIXP16_ROUND_UP;
+				wi = wl + NM3D_FIXP16_ROUND_UP;
+
+				// compute u,v interpolants
+				if ((dx = (xend - xstart)) > 0)
+				{
+					du = (ur - ul) / dx;
+					dv = (vr - vl) / dx;
+					dw = (wr - wl) / dx;
+				} // end if
+				else
+				{
+					du = (ur - ul);
+					dv = (vr - vl);
+					dw = (wr - wl);
+				} // end else
+
+				// draw span
+				for (xi = xstart; xi < xend; xi++)
+				{
+					// write textel 5.6.5
+#ifdef NM3D_PIXELFORMAT_565
+					screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT + 2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
+#else
+					screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT + 3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
+#endif
+					// screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
+					//  interpolate u,v
+					ui += du;
+					vi += dv;
+					wi += dw;
+				} // end for xi
+
+				// interpolate u,v,w,x along right and left edge
+				xl += dxdyl;
+				ul += dudyl;
+				vl += dvdyl;
+				wl += dwdyl;
+
+				xr += dxdyr;
+				ur += dudyr;
+				vr += dvdyr;
+				wr += dwdyr;
+
+				// advance screen ptr
+				screen_ptr += mem_pitch;
+
+			} // end for y
+
+		} // end if non-clipped
+
+	} // end if
+	else
+	{
+		if (tri_type == NM3D_TRI_TYPE_GENERAL)
+		{
+
+			// first test for bottom clip, always
+			if ((yend = y2) > max_clip_y)
+				yend = max_clip_y;
+
+			// pre-test y clipping status
+			if (y1 < min_clip_y)
+			{
+				// compute all deltas
+				// LHS
+				dyl = (y2 - y1);
+
+				dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+				dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT) / dyl;
+				dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT) / dyl;
+				dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT) / dyl;
+
+				// RHS
+				dyr = (y2 - y0);
+
+				dxdyr = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dyr;
+				dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT) / dyr;
+				dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT) / dyr;
+				dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT) / dyr;
+
+				// compute overclip
+				dyr = (min_clip_y - y0);
+				dyl = (min_clip_y - y1);
+
+				// computer new LHS starting values
+				xl = dxdyl * dyl + (x1 << NM3D_FIXP16_SHIFT);
+
+				ul = dudyl * dyl + (tu1 << NM3D_FIXP16_SHIFT);
+				vl = dvdyl * dyl + (tv1 << NM3D_FIXP16_SHIFT);
+				wl = dwdyl * dyl + (tw1 << NM3D_FIXP16_SHIFT);
+
+				// compute new RHS starting values
+				xr = dxdyr * dyr + (x0 << NM3D_FIXP16_SHIFT);
+
+				ur = dudyr * dyr + (tu0 << NM3D_FIXP16_SHIFT);
+				vr = dvdyr * dyr + (tv0 << NM3D_FIXP16_SHIFT);
+				wr = dwdyr * dyr + (tw0 << NM3D_FIXP16_SHIFT);
+
+				// compute new starting y
+				ystart = min_clip_y;
+
+				// test if we need swap to keep rendering left to right
+				if (dxdyr > dxdyl)
+				{
+					SWAP(dxdyl, dxdyr /*,temp*/);
+					SWAP(dudyl, dudyr /*,temp*/);
+					SWAP(dvdyl, dvdyr /*,temp*/);
+					SWAP(dwdyl, dwdyr /*,temp*/);
+					SWAP(xl, xr /*,temp*/);
+					SWAP(ul, ur /*,temp*/);
+					SWAP(vl, vr /*,temp*/);
+					SWAP(wl, wr /*,temp*/);
+					SWAP(x1, x2 /*,temp*/);
+					SWAP(y1, y2 /*,temp*/);
+					SWAP(tu1, tu2 /*,temp*/);
+					SWAP(tv1, tv2 /*,temp*/);
+					SWAP(tw1, tw2 /*,temp*/);
+
+					// set interpolation restart
+					irestart = NM3D_INTERP_RHS;
+
+				} // end if
+
+			} // end if
+			else
+			{
+				if (y0 < min_clip_y)
+				{
+					// compute all deltas
+					// LHS
+					dyl = (y1 - y0);
+
+					dxdyl = ((x1 - x0) << NM3D_FIXP16_SHIFT) / dyl;
+					dudyl = ((tu1 - tu0) << NM3D_FIXP16_SHIFT) / dyl;
+					dvdyl = ((tv1 - tv0) << NM3D_FIXP16_SHIFT) / dyl;
+					dwdyl = ((tw1 - tw0) << NM3D_FIXP16_SHIFT) / dyl;
+
+					// RHS
+					dyr = (y2 - y0);
+
+					dxdyr = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dyr;
+					dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT) / dyr;
+					dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT) / dyr;
+					dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT) / dyr;
+
+					// compute overclip
+					dy = (min_clip_y - y0);
+
+					// computer new LHS starting values
+					xl = dxdyl * dy + (x0 << NM3D_FIXP16_SHIFT);
+					ul = dudyl * dy + (tu0 << NM3D_FIXP16_SHIFT);
+					vl = dvdyl * dy + (tv0 << NM3D_FIXP16_SHIFT);
+					wl = dwdyl * dy + (tw0 << NM3D_FIXP16_SHIFT);
+
+					// compute new RHS starting values
+					xr = dxdyr * dy + (x0 << NM3D_FIXP16_SHIFT);
+					ur = dudyr * dy + (tu0 << NM3D_FIXP16_SHIFT);
+					vr = dvdyr * dy + (tv0 << NM3D_FIXP16_SHIFT);
+					wr = dwdyr * dy + (tw0 << NM3D_FIXP16_SHIFT);
+
+					// compute new starting y
+					ystart = min_clip_y;
+
+					// test if we need swap to keep rendering left to right
+					if (dxdyr < dxdyl)
+					{
+						SWAP(dxdyl, dxdyr /*,temp*/);
+						SWAP(dudyl, dudyr /*,temp*/);
+						SWAP(dvdyl, dvdyr /*,temp*/);
+						SWAP(dwdyl, dwdyr /*,temp*/);
+						SWAP(xl, xr /*,temp*/);
+						SWAP(ul, ur /*,temp*/);
+						SWAP(vl, vr /*,temp*/);
+						SWAP(wl, wr /*,temp*/);
+						SWAP(x1, x2 /*,temp*/);
+						SWAP(y1, y2 /*,temp*/);
+						SWAP(tu1, tu2 /*,temp*/);
+						SWAP(tv1, tv2 /*,temp*/);
+						SWAP(tw1, tw2 /*,temp*/);
+
+						// set interpolation restart
+						irestart = NM3D_INTERP_RHS;
+
+					} // end if
+
+				} // end if
+				else
+				{
+					// no initial y clipping
+
+					// compute all deltas
+					// LHS
+					dyl = (y1 - y0);
+
+					dxdyl = ((x1 - x0) << NM3D_FIXP16_SHIFT) / dyl;
+					dudyl = ((tu1 - tu0) << NM3D_FIXP16_SHIFT) / dyl;
+					dvdyl = ((tv1 - tv0) << NM3D_FIXP16_SHIFT) / dyl;
+					dwdyl = ((tw1 - tw0) << NM3D_FIXP16_SHIFT) / dyl;
+
+					// RHS
+					dyr = (y2 - y0);
+
+					dxdyr = ((x2 - x0) << NM3D_FIXP16_SHIFT) / dyr;
+					dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT) / dyr;
+					dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT) / dyr;
+					dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT) / dyr;
+
+					// no clipping y
+
+					// set starting values
+					xl = (x0 << NM3D_FIXP16_SHIFT);
+					xr = (x0 << NM3D_FIXP16_SHIFT);
+
+					ul = (tu0 << NM3D_FIXP16_SHIFT);
+					vl = (tv0 << NM3D_FIXP16_SHIFT);
+					wl = (tw0 << NM3D_FIXP16_SHIFT);
+
+					ur = (tu0 << NM3D_FIXP16_SHIFT);
+					vr = (tv0 << NM3D_FIXP16_SHIFT);
+					wr = (tw0 << NM3D_FIXP16_SHIFT);
+
+					// set starting y
+					ystart = y0;
+
+					// test if we need swap to keep rendering left to right
+					if (dxdyr < dxdyl)
+					{
+						SWAP(dxdyl, dxdyr /*,temp*/);
+						SWAP(dudyl, dudyr /*,temp*/);
+						SWAP(dvdyl, dvdyr /*,temp*/);
+						SWAP(dwdyl, dwdyr /*,temp*/);
+						SWAP(xl, xr /*,temp*/);
+						SWAP(ul, ur /*,temp*/);
+						SWAP(vl, vr /*,temp*/);
+						SWAP(wl, wr /*,temp*/);
+						SWAP(x1, x2 /*,temp*/);
+						SWAP(y1, y2 /*,temp*/);
+						SWAP(tu1, tu2 /*,temp*/);
+						SWAP(tv1, tv2 /*,temp*/);
+						SWAP(tw1, tw2 /*,temp*/);
+
+						// set interpolation restart
+						irestart = NM3D_INTERP_RHS;
+
+					} // end if
+
+				} // end else
+			}
+
+			// test for horizontal clipping
+			if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
+				(x1 < min_clip_x) || (x1 > max_clip_x) ||
+				(x2 < min_clip_x) || (x2 > max_clip_x))
+			{
+				// clip version
+				// x clipping
+
+				// point screen ptr to starting line
+				screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+				for (yi = ystart; yi < yend; yi++)
+				{
+					// compute span endpoints
+					xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+					xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
 
 					// compute starting points for u,v,w interpolants
 					ui = ul + NM3D_FIXP16_ROUND_UP;
@@ -8569,11 +8941,11 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					wi = wl + NM3D_FIXP16_ROUND_UP;
 
 					// compute u,v interpolants
-					if ((dx = (xend - xstart))>0)
+					if ((dx = (xend - xstart)) > 0)
 					{
-						du = (ur - ul)/dx;
-						dv = (vr - vl)/dx;
-						dw = (wr - wl)/dx;
+						du = (ur - ul) / dx;
+						dv = (vr - vl) / dx;
+						dw = (wr - wl) / dx;
 					} // end if
 					else
 					{
@@ -8591,11 +8963,11 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 						dx = min_clip_x - xstart;
 
 						// slide interpolants over
-						ui+=dx*du;
-						vi+=dx*dv;
-						wi+=dx*dw;
+						ui += dx * du;
+						vi += dx * dv;
+						wi += dx * dw;
 
-						// reset vars
+						// set x to left clip edge
 						xstart = min_clip_x;
 
 					} // end if
@@ -8607,42 +8979,94 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					///////////////////////////////////////////////////////////////////////
 
 					// draw span
-					for (xi=xstart; xi < xend; xi++)
+					for (xi = xstart; xi < xend; xi++)
 					{
 						// write textel assume 5.6.5
- #ifdef NM3D_PIXELFORMAT_565
- 						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT+2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
- #else
- 						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT+3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
- #endif
-						//screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
-						// interpolate u,v
-						ui+=du;
-						vi+=dv;
-						wi+=dw;
+#ifdef NM3D_PIXELFORMAT_565
+						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT + 2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
+#else
+						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT + 3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
+#endif
+						// screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
+						//  interpolate u,v
+						ui += du;
+						vi += dv;
+						wi += dw;
 					} // end for xi
 
 					// interpolate u,v,w,x along right and left edge
-					xl+=dxdyl;
-					ul+=dudyl;
-					vl+=dvdyl;
-					wl+=dwdyl;
+					xl += dxdyl;
+					ul += dudyl;
+					vl += dvdyl;
+					wl += dwdyl;
 
-					xr+=dxdyr;
-					ur+=dudyr;
-					vr+=dvdyr;
-					wr+=dwdyr;
+					xr += dxdyr;
+					ur += dudyr;
+					vr += dvdyr;
+					wr += dwdyr;
 
 					// advance screen ptr
-					screen_ptr+=mem_pitch;
+					screen_ptr += mem_pitch;
+
+					// test for yi hitting second region, if so change interpolant
+					if (yi == yrestart)
+					{
+						// test interpolation side change flag
+
+						if (irestart == NM3D_INTERP_LHS)
+						{
+							// LHS
+							dyl = (y2 - y1);
+
+							dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+							dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT) / dyl;
+							dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT) / dyl;
+							dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT) / dyl;
+
+							// set starting values
+							xl = (x1 << NM3D_FIXP16_SHIFT);
+							ul = (tu1 << NM3D_FIXP16_SHIFT);
+							vl = (tv1 << NM3D_FIXP16_SHIFT);
+							wl = (tw1 << NM3D_FIXP16_SHIFT);
+
+							// interpolate down on LHS to even up
+							xl += dxdyl;
+							ul += dudyl;
+							vl += dvdyl;
+							wl += dwdyl;
+						} // end if
+						else
+						{
+							// RHS
+							dyr = (y1 - y2);
+
+							dxdyr = ((x1 - x2) << NM3D_FIXP16_SHIFT) / dyr;
+							dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT) / dyr;
+							dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT) / dyr;
+							dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT) / dyr;
+
+							// set starting values
+							xr = (x2 << NM3D_FIXP16_SHIFT);
+							ur = (tu2 << NM3D_FIXP16_SHIFT);
+							vr = (tv2 << NM3D_FIXP16_SHIFT);
+							wr = (tw2 << NM3D_FIXP16_SHIFT);
+
+							// interpolate down on RHS to even up
+							xr += dxdyr;
+							ur += dudyr;
+							vr += dvdyr;
+							wr += dwdyr;
+
+						} // end else
+
+					} // end if
 
 				} // end for y
 
-			} // end if clip
+			} // end if
 			else
 			{
-				// non-clip version
-
+				// no x clipping
 				// point screen ptr to starting line
 				screen_ptr = dest_buffer + (ystart * mem_pitch);
 
@@ -8650,7 +9074,7 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 				{
 					// compute span endpoints
 					xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-					xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+					xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
 
 					// compute starting points for u,v,w interpolants
 					ui = ul + NM3D_FIXP16_ROUND_UP;
@@ -8658,11 +9082,11 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					wi = wl + NM3D_FIXP16_ROUND_UP;
 
 					// compute u,v interpolants
-					if ((dx = (xend - xstart))>0)
+					if ((dx = (xend - xstart)) > 0)
 					{
-						du = (ur - ul)/dx;
-						dv = (vr - vl)/dx;
-						dw = (wr - wl)/dx;
+						du = (ur - ul) / dx;
+						dv = (vr - vl) / dx;
+						dw = (wr - wl) / dx;
 					} // end if
 					else
 					{
@@ -8672,500 +9096,93 @@ void Nomad3D::CRender::Draw_Gouraud_Triangle2_16(float poly[3][3], UCHAR *_dest_
 					} // end else
 
 					// draw span
-					for (xi=xstart; xi < xend; xi++)
+					for (xi = xstart; xi < xend; xi++)
 					{
-						// write textel 5.6.5
+						// write textel assume 5.6.5
 #ifdef NM3D_PIXELFORMAT_565
-						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT+2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
+						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT + 2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
 #else
-						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT+3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
+						screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT + 3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT + 3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT + 3));
 #endif
-						//screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
-						// interpolate u,v
-						ui+=du;
-						vi+=dv;
-						wi+=dw;
+						// screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
+						//  interpolate u,v
+						ui += du;
+						vi += dv;
+						wi += dw;
 					} // end for xi
 
 					// interpolate u,v,w,x along right and left edge
-					xl+=dxdyl;
-					ul+=dudyl;
-					vl+=dvdyl;
-					wl+=dwdyl;
+					xl += dxdyl;
+					ul += dudyl;
+					vl += dvdyl;
+					wl += dwdyl;
 
-					xr+=dxdyr;
-					ur+=dudyr;
-					vr+=dvdyr;
-					wr+=dwdyr;
+					xr += dxdyr;
+					ur += dudyr;
+					vr += dvdyr;
+					wr += dwdyr;
 
 					// advance screen ptr
-					screen_ptr+=mem_pitch;
+					screen_ptr += mem_pitch;
+
+					// test for yi hitting second region, if so change interpolant
+					if (yi == yrestart)
+					{
+						// test interpolation side change flag
+
+						if (irestart == NM3D_INTERP_LHS)
+						{
+							// LHS
+							dyl = (y2 - y1);
+
+							dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+							dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT) / dyl;
+							dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT) / dyl;
+							dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT) / dyl;
+
+							// set starting values
+							xl = (x1 << NM3D_FIXP16_SHIFT);
+							ul = (tu1 << NM3D_FIXP16_SHIFT);
+							vl = (tv1 << NM3D_FIXP16_SHIFT);
+							wl = (tw1 << NM3D_FIXP16_SHIFT);
+
+							// interpolate down on LHS to even up
+							xl += dxdyl;
+							ul += dudyl;
+							vl += dvdyl;
+							wl += dwdyl;
+						} // end if
+						else
+						{
+							// RHS
+							dyr = (y1 - y2);
+
+							dxdyr = ((x1 - x2) << NM3D_FIXP16_SHIFT) / dyr;
+							dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT) / dyr;
+							dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT) / dyr;
+							dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT) / dyr;
+
+							// set starting values
+							xr = (x2 << NM3D_FIXP16_SHIFT);
+							ur = (tu2 << NM3D_FIXP16_SHIFT);
+							vr = (tv2 << NM3D_FIXP16_SHIFT);
+							wr = (tw2 << NM3D_FIXP16_SHIFT);
+
+							// interpolate down on RHS to even up
+							xr += dxdyr;
+							ur += dudyr;
+							vr += dvdyr;
+							wr += dwdyr;
+						} // end else
+
+					} // end if
 
 				} // end for y
 
-			} // end if non-clipped
+			} // end else
 
 		} // end if
-		else
-			if (tri_type==NM3D_TRI_TYPE_GENERAL)
-			{
-
-				// first test for bottom clip, always
-				if ((yend = y2) > max_clip_y)
-					yend = max_clip_y;
-
-				// pre-test y clipping status
-				if (y1 < min_clip_y)
-				{
-					// compute all deltas
-					// LHS
-					dyl = (y2 - y1);
-
-					dxdyl = ((x2  - x1)  << NM3D_FIXP16_SHIFT)/dyl;
-					dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT)/dyl;  
-					dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT)/dyl;    
-					dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT)/dyl;  
-
-					// RHS
-					dyr = (y2 - y0);	
-
-					dxdyr = ((x2  - x0)  << NM3D_FIXP16_SHIFT)/dyr;
-					dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT)/dyr;  
-					dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT)/dyr;   
-					dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT)/dyr;   
-
-					// compute overclip
-					dyr = (min_clip_y - y0);
-					dyl = (min_clip_y - y1);
-
-					// computer new LHS starting values
-					xl = dxdyl*dyl + (x1  << NM3D_FIXP16_SHIFT);
-
-					ul = dudyl*dyl + (tu1 << NM3D_FIXP16_SHIFT);
-					vl = dvdyl*dyl + (tv1 << NM3D_FIXP16_SHIFT);
-					wl = dwdyl*dyl + (tw1 << NM3D_FIXP16_SHIFT);
-
-					// compute new RHS starting values
-					xr = dxdyr*dyr + (x0  << NM3D_FIXP16_SHIFT);
-
-					ur = dudyr*dyr + (tu0 << NM3D_FIXP16_SHIFT);
-					vr = dvdyr*dyr + (tv0 << NM3D_FIXP16_SHIFT);
-					wr = dwdyr*dyr + (tw0 << NM3D_FIXP16_SHIFT);
-
-					// compute new starting y
-					ystart = min_clip_y;
-
-					// test if we need swap to keep rendering left to right
-					if (dxdyr > dxdyl)
-					{
-						SWAP(dxdyl,dxdyr/*,temp*/);
-						SWAP(dudyl,dudyr/*,temp*/);
-						SWAP(dvdyl,dvdyr/*,temp*/);
-						SWAP(dwdyl,dwdyr/*,temp*/);
-						SWAP(xl,xr/*,temp*/);
-						SWAP(ul,ur/*,temp*/);
-						SWAP(vl,vr/*,temp*/);
-						SWAP(wl,wr/*,temp*/);
-						SWAP(x1,x2/*,temp*/);
-						SWAP(y1,y2/*,temp*/);
-						SWAP(tu1,tu2/*,temp*/);
-						SWAP(tv1,tv2/*,temp*/);
-						SWAP(tw1,tw2/*,temp*/);
-
-						// set interpolation restart
-						irestart = NM3D_INTERP_RHS;
-
-					} // end if
-
-				} // end if
-				else
-					if (y0 < min_clip_y)
-					{
-						// compute all deltas
-						// LHS
-						dyl = (y1 - y0);
-
-						dxdyl = ((x1  - x0)  << NM3D_FIXP16_SHIFT)/dyl;
-						dudyl = ((tu1 - tu0) << NM3D_FIXP16_SHIFT)/dyl;  
-						dvdyl = ((tv1 - tv0) << NM3D_FIXP16_SHIFT)/dyl;    
-						dwdyl = ((tw1 - tw0) << NM3D_FIXP16_SHIFT)/dyl; 
-
-						// RHS
-						dyr = (y2 - y0);	
-
-						dxdyr = ((x2  - x0)  << NM3D_FIXP16_SHIFT)/dyr;
-						dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT)/dyr;  
-						dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT)/dyr;   
-						dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT)/dyr;   
-
-						// compute overclip
-						dy = (min_clip_y - y0);
-
-						// computer new LHS starting values
-						xl = dxdyl*dy + (x0  << NM3D_FIXP16_SHIFT);
-						ul = dudyl*dy + (tu0 << NM3D_FIXP16_SHIFT);
-						vl = dvdyl*dy + (tv0 << NM3D_FIXP16_SHIFT);
-						wl = dwdyl*dy + (tw0 << NM3D_FIXP16_SHIFT);
-
-						// compute new RHS starting values
-						xr = dxdyr*dy + (x0  << NM3D_FIXP16_SHIFT);
-						ur = dudyr*dy + (tu0 << NM3D_FIXP16_SHIFT);
-						vr = dvdyr*dy + (tv0 << NM3D_FIXP16_SHIFT);
-						wr = dwdyr*dy + (tw0 << NM3D_FIXP16_SHIFT);
-
-						// compute new starting y
-						ystart = min_clip_y;
-
-						// test if we need swap to keep rendering left to right
-						if (dxdyr < dxdyl)
-						{
-							SWAP(dxdyl,dxdyr/*,temp*/);
-							SWAP(dudyl,dudyr/*,temp*/);
-							SWAP(dvdyl,dvdyr/*,temp*/);
-							SWAP(dwdyl,dwdyr/*,temp*/);
-							SWAP(xl,xr/*,temp*/);
-							SWAP(ul,ur/*,temp*/);
-							SWAP(vl,vr/*,temp*/);
-							SWAP(wl,wr/*,temp*/);
-							SWAP(x1,x2/*,temp*/);
-							SWAP(y1,y2/*,temp*/);
-							SWAP(tu1,tu2/*,temp*/);
-							SWAP(tv1,tv2/*,temp*/);
-							SWAP(tw1,tw2/*,temp*/);
-
-							// set interpolation restart
-							irestart = NM3D_INTERP_RHS;
-
-						} // end if
-
-					} // end if
-					else
-					{
-						// no initial y clipping
-
-						// compute all deltas
-						// LHS
-						dyl = (y1 - y0);
-
-						dxdyl = ((x1  - x0)  << NM3D_FIXP16_SHIFT)/dyl;
-						dudyl = ((tu1 - tu0) << NM3D_FIXP16_SHIFT)/dyl;  
-						dvdyl = ((tv1 - tv0) << NM3D_FIXP16_SHIFT)/dyl;    
-						dwdyl = ((tw1 - tw0) << NM3D_FIXP16_SHIFT)/dyl;   
-
-						// RHS
-						dyr = (y2 - y0);	
-
-						dxdyr = ((x2 - x0)   << NM3D_FIXP16_SHIFT)/dyr;
-						dudyr = ((tu2 - tu0) << NM3D_FIXP16_SHIFT)/dyr;  
-						dvdyr = ((tv2 - tv0) << NM3D_FIXP16_SHIFT)/dyr;   		
-						dwdyr = ((tw2 - tw0) << NM3D_FIXP16_SHIFT)/dyr;
-
-						// no clipping y
-
-						// set starting values
-						xl = (x0 << NM3D_FIXP16_SHIFT);
-						xr = (x0 << NM3D_FIXP16_SHIFT);
-
-						ul = (tu0 << NM3D_FIXP16_SHIFT);
-						vl = (tv0 << NM3D_FIXP16_SHIFT);
-						wl = (tw0 << NM3D_FIXP16_SHIFT);
-
-						ur = (tu0 << NM3D_FIXP16_SHIFT);
-						vr = (tv0 << NM3D_FIXP16_SHIFT);
-						wr = (tw0 << NM3D_FIXP16_SHIFT);
-
-						// set starting y
-						ystart = y0;
-
-						// test if we need swap to keep rendering left to right
-						if (dxdyr < dxdyl)
-						{
-							SWAP(dxdyl,dxdyr/*,temp*/);
-							SWAP(dudyl,dudyr/*,temp*/);
-							SWAP(dvdyl,dvdyr/*,temp*/);
-							SWAP(dwdyl,dwdyr/*,temp*/);
-							SWAP(xl,xr/*,temp*/);
-							SWAP(ul,ur/*,temp*/);
-							SWAP(vl,vr/*,temp*/);
-							SWAP(wl,wr/*,temp*/);
-							SWAP(x1,x2/*,temp*/);
-							SWAP(y1,y2/*,temp*/);
-							SWAP(tu1,tu2/*,temp*/);
-							SWAP(tv1,tv2/*,temp*/);
-							SWAP(tw1,tw2/*,temp*/);
-
-							// set interpolation restart
-							irestart = NM3D_INTERP_RHS;
-
-						} // end if
-
-					} // end else
-
-					// test for horizontal clipping
-					if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
-						(x1 < min_clip_x) || (x1 > max_clip_x) ||
-						(x2 < min_clip_x) || (x2 > max_clip_x))
-					{
-						// clip version
-						// x clipping	
-
-						// point screen ptr to starting line
-						screen_ptr = dest_buffer + (ystart * mem_pitch);
-
-						for (yi = ystart; yi < yend; yi++)
-						{
-							// compute span endpoints
-							xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-
-							// compute starting points for u,v,w interpolants
-							ui = ul + NM3D_FIXP16_ROUND_UP;
-							vi = vl + NM3D_FIXP16_ROUND_UP;
-							wi = wl + NM3D_FIXP16_ROUND_UP;
-
-							// compute u,v interpolants
-							if ((dx = (xend - xstart))>0)
-							{
-								du = (ur - ul)/dx;
-								dv = (vr - vl)/dx;
-								dw = (wr - wl)/dx;
-							} // end if
-							else
-							{
-								du = (ur - ul);
-								dv = (vr - vl);
-								dw = (wr - wl);
-							} // end else
-
-							///////////////////////////////////////////////////////////////////////
-
-							// test for x clipping, LHS
-							if (xstart < min_clip_x)
-							{
-								// compute x overlap
-								dx = min_clip_x - xstart;
-
-								// slide interpolants over
-								ui+=dx*du;
-								vi+=dx*dv;
-								wi+=dx*dw;
-
-								// set x to left clip edge
-								xstart = min_clip_x;
-
-							} // end if
-
-							// test for x clipping RHS
-							if (xend > max_clip_x)
-								xend = max_clip_x;
-
-							///////////////////////////////////////////////////////////////////////
-
-							// draw span
-							for (xi=xstart; xi < xend; xi++)
-							{
-								// write textel assume 5.6.5
-#ifdef NM3D_PIXELFORMAT_565
-								screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT+2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
-#else
-								screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT+3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
-#endif
-								//screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
-								// interpolate u,v
-								ui+=du;
-								vi+=dv;
-								wi+=dw;
-							} // end for xi
-
-							// interpolate u,v,w,x along right and left edge
-							xl+=dxdyl;
-							ul+=dudyl;
-							vl+=dvdyl;
-							wl+=dwdyl;
-
-							xr+=dxdyr;
-							ur+=dudyr;
-							vr+=dvdyr;
-							wr+=dwdyr;
-
-							// advance screen ptr
-							screen_ptr+=mem_pitch;
-
-							// test for yi hitting second region, if so change interpolant
-							if (yi==yrestart)
-							{
-								// test interpolation side change flag
-
-								if (irestart == NM3D_INTERP_LHS)
-								{
-									// LHS
-									dyl = (y2 - y1);	
-
-									dxdyl = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dyl;
-									dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT)/dyl;  
-									dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT)/dyl;   		
-									dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT)/dyl;  
-
-									// set starting values
-									xl = (x1  << NM3D_FIXP16_SHIFT);
-									ul = (tu1 << NM3D_FIXP16_SHIFT);
-									vl = (tv1 << NM3D_FIXP16_SHIFT);
-									wl = (tw1 << NM3D_FIXP16_SHIFT);
-
-									// interpolate down on LHS to even up
-									xl+=dxdyl;
-									ul+=dudyl;
-									vl+=dvdyl;
-									wl+=dwdyl;
-								} // end if
-								else
-								{
-									// RHS
-									dyr = (y1 - y2);	
-
-									dxdyr = ((x1 - x2)   << NM3D_FIXP16_SHIFT)/dyr;
-									dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT)/dyr;  
-									dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT)/dyr;   		
-									dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT)/dyr;   		
-
-									// set starting values
-									xr = (x2  << NM3D_FIXP16_SHIFT);
-									ur = (tu2 << NM3D_FIXP16_SHIFT);
-									vr = (tv2 << NM3D_FIXP16_SHIFT);
-									wr = (tw2 << NM3D_FIXP16_SHIFT);
-
-									// interpolate down on RHS to even up
-									xr+=dxdyr;
-									ur+=dudyr;
-									vr+=dvdyr;
-									wr+=dwdyr;
-
-								} // end else
-
-							} // end if
-
-						} // end for y
-
-					} // end if
-					else
-					{
-						// no x clipping
-						// point screen ptr to starting line
-						screen_ptr = dest_buffer + (ystart * mem_pitch);
-
-						for (yi = ystart; yi < yend; yi++)
-						{
-							// compute span endpoints
-							xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-
-							// compute starting points for u,v,w interpolants
-							ui = ul + NM3D_FIXP16_ROUND_UP;
-							vi = vl + NM3D_FIXP16_ROUND_UP;
-							wi = wl + NM3D_FIXP16_ROUND_UP;
-
-							// compute u,v interpolants
-							if ((dx = (xend - xstart))>0)
-							{
-								du = (ur - ul)/dx;
-								dv = (vr - vl)/dx;
-								dw = (wr - wl)/dx;
-							} // end if
-							else
-							{
-								du = (ur - ul);
-								dv = (vr - vl);
-								dw = (wr - wl);
-							} // end else
-
-							// draw span
-							for (xi=xstart; xi < xend; xi++)
-							{
-								// write textel assume 5.6.5
-#ifdef NM3D_PIXELFORMAT_565
-								screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 11) + ((vi >> (NM3D_FIXP16_SHIFT+2)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
-#else
-								screen_ptr[xi] = ((ui >> (NM3D_FIXP16_SHIFT+3)) << 10) + ((vi >> (NM3D_FIXP16_SHIFT+3)) << 5) + (wi >> (NM3D_FIXP16_SHIFT+3));   
-#endif
-								//screen_ptr[xi] = CRGBA(ui,vi,wi).GetRGB();
-								// interpolate u,v
-								ui+=du;
-								vi+=dv;
-								wi+=dw;
-							} // end for xi
-
-							// interpolate u,v,w,x along right and left edge
-							xl+=dxdyl;
-							ul+=dudyl;
-							vl+=dvdyl;
-							wl+=dwdyl;
-
-							xr+=dxdyr;
-							ur+=dudyr;
-							vr+=dvdyr;
-							wr+=dwdyr;
-
-							// advance screen ptr
-							screen_ptr+=mem_pitch;
-
-							// test for yi hitting second region, if so change interpolant
-							if (yi==yrestart)
-							{
-								// test interpolation side change flag
-
-								if (irestart == NM3D_INTERP_LHS)
-								{
-									// LHS
-									dyl = (y2 - y1);	
-
-									dxdyl = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dyl;
-									dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT)/dyl;  
-									dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT)/dyl;   		
-									dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT)/dyl;   
-
-									// set starting values
-									xl = (x1  << NM3D_FIXP16_SHIFT);
-									ul = (tu1 << NM3D_FIXP16_SHIFT);
-									vl = (tv1 << NM3D_FIXP16_SHIFT);
-									wl = (tw1 << NM3D_FIXP16_SHIFT);
-
-									// interpolate down on LHS to even up
-									xl+=dxdyl;
-									ul+=dudyl;
-									vl+=dvdyl;
-									wl+=dwdyl;
-								} // end if
-								else
-								{
-									// RHS
-									dyr = (y1 - y2);	
-
-									dxdyr = ((x1 - x2)   << NM3D_FIXP16_SHIFT)/dyr;
-									dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT)/dyr;  
-									dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT)/dyr;   		
-									dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT)/dyr;   
-
-									// set starting values
-									xr = (x2  << NM3D_FIXP16_SHIFT);
-									ur = (tu2 << NM3D_FIXP16_SHIFT);
-									vr = (tv2 << NM3D_FIXP16_SHIFT);
-									wr = (tw2 << NM3D_FIXP16_SHIFT);
-
-									// interpolate down on RHS to even up
-									xr+=dxdyr;
-									ur+=dudyr;
-									vr+=dvdyr;
-									wr+=dwdyr;
-								} // end else
-
-							} // end if
-
-						} // end for y
-
-					} // end else	
-
-			} // end if
-
+	}
 } // end Draw_Gouraud_Triangle2_16
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9177,11 +9194,12 @@ void Nomad3D::CRender::Draw_Textured_TriangleGS_16(float poly[3][3], float uu[3]
 	// this function draws a textured gouraud shaded polygon, based on the affine texture mapper, 
 	// we simply interpolate the (R,G,B) values across the polygons along with the texture coordinates
 	// and then modulate to get the final color 
-
+	(void)vv;
+	(void)uu;
 	int v0=0,
 		v1=1,
 		v2=2,
-		temp=0,
+		//temp=0,
 		tri_type = NM3D_TRI_TYPE_NONE,
 		irestart = NM3D_INTERP_LHS;
 
@@ -9235,7 +9253,7 @@ void Nomad3D::CRender::Draw_Textured_TriangleGS_16(float poly[3][3], float uu[3]
 	USHORT textel;
 
 	USHORT *screen_ptr  = NULL,
-		*screen_line = NULL,
+		//*screen_line = NULL,
 		*textmap     = NULL,
 		*dest_buffer = (USHORT *)buff;
 
@@ -9949,6 +9967,7 @@ void Nomad3D::CRender::Draw_Textured_TriangleGS_16(float poly[3][3], float uu[3]
 
 				} // end if
 				else
+				{
 					if (y0 < min_clip_y)
 					{
 						// compute all deltas
@@ -10125,424 +10144,412 @@ void Nomad3D::CRender::Draw_Textured_TriangleGS_16(float poly[3][3], float uu[3]
 						} // end if
 
 					} // end else
+				}
 
-					// test for horizontal clipping
-					if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
-						(x1 < min_clip_x) || (x1 > max_clip_x) ||
-						(x2 < min_clip_x) || (x2 > max_clip_x))
+				// test for horizontal clipping
+				if ((x0 < min_clip_x) || (x0 > max_clip_x) ||
+					(x1 < min_clip_x) || (x1 > max_clip_x) ||
+					(x2 < min_clip_x) || (x2 > max_clip_x))
+				{
+					// clip version
+					// x clipping
+
+					// point screen ptr to starting line
+					screen_ptr = dest_buffer + (ystart * mem_pitch);
+
+					for (yi = ystart; yi < yend; yi++)
 					{
-						// clip version
-						// x clipping	
+						// compute span endpoints
+						xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+						xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
 
-						// point screen ptr to starting line
-						screen_ptr = dest_buffer + (ystart * mem_pitch);
+						// compute starting points for u,v,w interpolants
+						ui = ul + NM3D_FIXP16_ROUND_UP;
+						vi = vl + NM3D_FIXP16_ROUND_UP;
+						wi = wl + NM3D_FIXP16_ROUND_UP;
 
-						for (yi = ystart; yi < yend; yi++)
+						si = sl + NM3D_FIXP16_ROUND_UP;
+						ti = tl + NM3D_FIXP16_ROUND_UP;
+
+						// compute u,v interpolants
+						if ((dx = (xend - xstart)) > 0)
 						{
-							// compute span endpoints
-							xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+							du = (ur - ul) / dx;
+							dv = (vr - vl) / dx;
+							dw = (wr - wl) / dx;
 
-							// compute starting points for u,v,w interpolants
-							ui = ul + NM3D_FIXP16_ROUND_UP;
-							vi = vl + NM3D_FIXP16_ROUND_UP;
-							wi = wl + NM3D_FIXP16_ROUND_UP;
+							ds = (sr - sl) / dx;
+							dt = (tr - tl) / dx;
 
-							si = sl + NM3D_FIXP16_ROUND_UP;
-							ti = tl + NM3D_FIXP16_ROUND_UP;
+						} // end if
+						else
+						{
+							du = (ur - ul);
+							dv = (vr - vl);
+							dw = (wr - wl);
 
+							ds = (sr - sl);
+							dt = (tr - tl);
 
-							// compute u,v interpolants
-							if ((dx = (xend - xstart))>0)
+						} // end else
+
+						///////////////////////////////////////////////////////////////////////
+
+						// test for x clipping, LHS
+						if (xstart < min_clip_x)
+						{
+							// compute x overlap
+							dx = min_clip_x - xstart;
+
+							// slide interpolants over
+							ui += dx * du;
+							vi += dx * dv;
+							wi += dx * dw;
+
+							si += dx * ds;
+							ti += dx * dt;
+
+							// set x to left clip edge
+							xstart = min_clip_x;
+
+						} // end if
+
+						// test for x clipping RHS
+						if (xend > max_clip_x)
+							xend = max_clip_x;
+
+						///////////////////////////////////////////////////////////////////////
+
+						// draw span
+						for (xi = xstart; xi < xend; xi++)
+						{
+							// write textel assume 5.6.5
+							// screen_ptr[xi] = ( (ui >> (FIXP16_SHIFT+3)) << 11) +
+							//                 ( (vi >> (FIXP16_SHIFT+2)) << 5) +
+							//                   (wi >> (FIXP16_SHIFT+3) );
+
+							// get textel first
+							textel = textmap[(si >> NM3D_FIXP16_SHIFT) + ((ti >> NM3D_FIXP16_SHIFT) << texture_shift2)];
+#ifdef NM3D_PIXELFORMAT_565
+							// extract rgb components
+							r_textel = ((textel >> 11));
+							g_textel = ((textel >> 5) & 0x3f);
+							b_textel = (textel & 0x1f);
+#else // PIXEL_FORMAT555
+							r_textel = ((textel >> 10) & 0x1f);
+							g_textel = ((textel >> 5) & 0x1f);
+							b_textel = (textel & 0x1f);
+#endif
+							// modulate textel with gouraud shading
+							r_textel *= ui;
+							g_textel *= vi;
+							b_textel *= wi;
+
+							// finally write pixel, note that we did the math such that the results are r*32, g*64, b*32
+							// hence we need to divide the results by 32,64,32 respetively, BUT since we need to shift
+							// the results to fit into the destination 5.6.5 word, we can take advantage of the shifts
+							// and they all cancel out for the most part, but we will need logical anding, we will do
+							// it later when we optimize more...
+#ifdef NM3D_PIXELFORMAT_565
+							screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT + 8)) +
+											  ((g_textel >> (NM3D_FIXP16_SHIFT + 8)) << 5) +
+											  ((r_textel >> (NM3D_FIXP16_SHIFT + 8)) << 11));
+#else // PIXEL_FORMAT555
+							screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT + 8)) +
+											  ((g_textel >> (NM3D_FIXP16_SHIFT + 8)) << 5) +
+											  ((r_textel >> (NM3D_FIXP16_SHIFT + 8)) << 10));
+#endif
+							// interpolate u,v
+							ui += du;
+							vi += dv;
+							wi += dw;
+
+							si += ds;
+							ti += dt;
+
+						} // end for xi
+
+						// interpolate u,v,w,x along right and left edge
+						xl += dxdyl;
+						ul += dudyl;
+						vl += dvdyl;
+						wl += dwdyl;
+
+						sl += dsdyl;
+						tl += dtdyl;
+
+						xr += dxdyr;
+						ur += dudyr;
+						vr += dvdyr;
+						wr += dwdyr;
+
+						sr += dsdyr;
+						tr += dtdyr;
+
+						// advance screen ptr
+						screen_ptr += mem_pitch;
+
+						// test for yi hitting second region, if so change interpolant
+						if (yi == yrestart)
+						{
+							// test interpolation side change flag
+
+							if (irestart == NM3D_INTERP_LHS)
 							{
-								du = (ur - ul)/dx;
-								dv = (vr - vl)/dx;
-								dw = (wr - wl)/dx;
+								// LHS
+								dyl = (y2 - y1);
 
-								ds = (sr - sl)/dx;
-								dt = (tr - tl)/dx;
+								dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+								dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT) / dyl;
+								dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT) / dyl;
+								dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT) / dyl;
+
+								dsdyl = ((ts2 - ts1) << NM3D_FIXP16_SHIFT) / dyl;
+								dtdyl = ((tt2 - tt1) << NM3D_FIXP16_SHIFT) / dyl;
+
+								// set starting values
+								xl = (x1 << NM3D_FIXP16_SHIFT);
+								ul = (tu1 << NM3D_FIXP16_SHIFT);
+								vl = (tv1 << NM3D_FIXP16_SHIFT);
+								wl = (tw1 << NM3D_FIXP16_SHIFT);
+
+								sl = (ts1 << NM3D_FIXP16_SHIFT);
+								tl = (tt1 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on LHS to even up
+								xl += dxdyl;
+								ul += dudyl;
+								vl += dvdyl;
+								wl += dwdyl;
+
+								sl += dsdyl;
+								tl += dtdyl;
 
 							} // end if
 							else
 							{
-								du = (ur - ul);
-								dv = (vr - vl);
-								dw = (wr - wl);
+								// RHS
+								dyr = (y1 - y2);
 
-								ds = (sr - sl);
-								dt = (tr - tl);
+								dxdyr = ((x1 - x2) << NM3D_FIXP16_SHIFT) / dyr;
+								dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT) / dyr;
+								dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT) / dyr;
+								dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT) / dyr;
+
+								dsdyr = ((ts1 - ts2) << NM3D_FIXP16_SHIFT) / dyr;
+								dtdyr = ((tt1 - tt2) << NM3D_FIXP16_SHIFT) / dyr;
+
+								// set starting values
+								xr = (x2 << NM3D_FIXP16_SHIFT);
+								ur = (tu2 << NM3D_FIXP16_SHIFT);
+								vr = (tv2 << NM3D_FIXP16_SHIFT);
+								wr = (tw2 << NM3D_FIXP16_SHIFT);
+
+								sr = (ts2 << NM3D_FIXP16_SHIFT);
+								tr = (tt2 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on RHS to even up
+								xr += dxdyr;
+								ur += dudyr;
+								vr += dvdyr;
+								wr += dwdyr;
+
+								sr += dsdyr;
+								tr += dtdyr;
 
 							} // end else
 
-							///////////////////////////////////////////////////////////////////////
+						} // end if
 
-							// test for x clipping, LHS
-							if (xstart < min_clip_x)
-							{
-								// compute x overlap
-								dx = min_clip_x - xstart;
+					} // end for y
 
-								// slide interpolants over
-								ui+=dx*du;
-								vi+=dx*dv;
-								wi+=dx*dw;
+				} // end if
+				else
+				{
+					// no x clipping
+					// point screen ptr to starting line
+					screen_ptr = dest_buffer + (ystart * mem_pitch);
 
-								si+=dx*ds;
-								ti+=dx*dt;
-
-
-								// set x to left clip edge
-								xstart = min_clip_x;
-
-							} // end if
-
-							// test for x clipping RHS
-							if (xend > max_clip_x)
-								xend = max_clip_x;
-
-							///////////////////////////////////////////////////////////////////////
-
-							// draw span
-							for (xi=xstart; xi < xend; xi++)
-							{
-								// write textel assume 5.6.5
-								//screen_ptr[xi] = ( (ui >> (FIXP16_SHIFT+3)) << 11) + 
-								//                 ( (vi >> (FIXP16_SHIFT+2)) << 5) + 
-								//                   (wi >> (FIXP16_SHIFT+3) );   
-
-								// get textel first
-								textel = textmap[(si >> NM3D_FIXP16_SHIFT) + ((ti >> NM3D_FIXP16_SHIFT) << texture_shift2)];
-#ifdef NM3D_PIXELFORMAT_565
-								// extract rgb components
-								r_textel  = ((textel >> 11)       ); 
-								g_textel  = ((textel >> 5)  & 0x3f); 
-								b_textel =   (textel        & 0x1f);
-#else // PIXEL_FORMAT555
-								r_textel  = ((textel >> 10) & 0x1f); 
-								g_textel  = ((textel >> 5)  & 0x1f); 
-								b_textel =   (textel        & 0x1f);
-#endif
-								// modulate textel with gouraud shading
-								r_textel*=ui; 
-								g_textel*=vi;
-								b_textel*=wi;
-
-								// finally write pixel, note that we did the math such that the results are r*32, g*64, b*32
-								// hence we need to divide the results by 32,64,32 respetively, BUT since we need to shift
-								// the results to fit into the destination 5.6.5 word, we can take advantage of the shifts
-								// and they all cancel out for the most part, but we will need logical anding, we will do
-								// it later when we optimize more...
-#ifdef NM3D_PIXELFORMAT_565
-								screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT+8)) + 
-									((g_textel >> (NM3D_FIXP16_SHIFT+8)) << 5) + 
-									((r_textel >> (NM3D_FIXP16_SHIFT+8)) << 11));
-#else // PIXEL_FORMAT555
-								screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT+8)) + 
-									((g_textel >> (NM3D_FIXP16_SHIFT+8)) << 5) + 
-									((r_textel >> (NM3D_FIXP16_SHIFT+8)) << 10));
-#endif
-								// interpolate u,v
-								ui+=du;
-								vi+=dv;
-								wi+=dw;
-
-								si+=ds;
-								ti+=dt;
-
-
-							} // end for xi
-
-							// interpolate u,v,w,x along right and left edge
-							xl+=dxdyl;
-							ul+=dudyl;
-							vl+=dvdyl;
-							wl+=dwdyl;
-
-							sl+=dsdyl;
-							tl+=dtdyl;
-
-
-							xr+=dxdyr;
-							ur+=dudyr;
-							vr+=dvdyr;
-							wr+=dwdyr;
-
-
-							sr+=dsdyr;
-							tr+=dtdyr;
-
-							// advance screen ptr
-							screen_ptr+=mem_pitch;
-
-							// test for yi hitting second region, if so change interpolant
-							if (yi==yrestart)
-							{
-								// test interpolation side change flag
-
-								if (irestart == NM3D_INTERP_LHS)
-								{
-									// LHS
-									dyl = (y2 - y1);	
-
-									dxdyl = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dyl;
-									dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT)/dyl;  
-									dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT)/dyl;   		
-									dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT)/dyl;  
-
-									dsdyl = ((ts2 - ts1) << NM3D_FIXP16_SHIFT)/dyl;   		
-									dtdyl = ((tt2 - tt1) << NM3D_FIXP16_SHIFT)/dyl;  
-
-
-									// set starting values
-									xl = (x1  << NM3D_FIXP16_SHIFT);
-									ul = (tu1 << NM3D_FIXP16_SHIFT);
-									vl = (tv1 << NM3D_FIXP16_SHIFT);
-									wl = (tw1 << NM3D_FIXP16_SHIFT);
-
-									sl = (ts1 << NM3D_FIXP16_SHIFT);
-									tl = (tt1 << NM3D_FIXP16_SHIFT);
-
-
-									// interpolate down on LHS to even up
-									xl+=dxdyl;
-									ul+=dudyl;
-									vl+=dvdyl;
-									wl+=dwdyl;
-
-									sl+=dsdyl;
-									tl+=dtdyl;
-
-								} // end if
-								else
-								{
-									// RHS
-									dyr = (y1 - y2);	
-
-									dxdyr = ((x1 - x2)   << NM3D_FIXP16_SHIFT)/dyr;
-									dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT)/dyr;  
-									dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT)/dyr;   		
-									dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT)/dyr;   		
-
-									dsdyr = ((ts1 - ts2) << NM3D_FIXP16_SHIFT)/dyr;   		
-									dtdyr = ((tt1 - tt2) << NM3D_FIXP16_SHIFT)/dyr;  
-
-
-									// set starting values
-									xr = (x2  << NM3D_FIXP16_SHIFT);
-									ur = (tu2 << NM3D_FIXP16_SHIFT);
-									vr = (tv2 << NM3D_FIXP16_SHIFT);
-									wr = (tw2 << NM3D_FIXP16_SHIFT);
-
-									sr = (ts2 << NM3D_FIXP16_SHIFT);
-									tr = (tt2 << NM3D_FIXP16_SHIFT);
-
-
-									// interpolate down on RHS to even up
-									xr+=dxdyr;
-									ur+=dudyr;
-									vr+=dvdyr;
-									wr+=dwdyr;
-
-									sr+=dsdyr;
-									tr+=dtdyr;
-
-
-								} // end else
-
-							} // end if
-
-						} // end for y
-
-					} // end if
-					else
+					for (yi = ystart; yi < yend; yi++)
 					{
-						// no x clipping
-						// point screen ptr to starting line
-						screen_ptr = dest_buffer + (ystart * mem_pitch);
+						// compute span endpoints
+						xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+						xend = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
 
-						for (yi = ystart; yi < yend; yi++)
+						// compute starting points for u,v,w interpolants
+						ui = ul + NM3D_FIXP16_ROUND_UP;
+						vi = vl + NM3D_FIXP16_ROUND_UP;
+						wi = wl + NM3D_FIXP16_ROUND_UP;
+
+						si = sl + NM3D_FIXP16_ROUND_UP;
+						ti = tl + NM3D_FIXP16_ROUND_UP;
+
+						// compute u,v interpolants
+						if ((dx = (xend - xstart)) > 0)
 						{
-							// compute span endpoints
-							xstart = ((xl + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
-							xend   = ((xr + NM3D_FIXP16_ROUND_UP) >> NM3D_FIXP16_SHIFT);
+							du = (ur - ul) / dx;
+							dv = (vr - vl) / dx;
+							dw = (wr - wl) / dx;
 
-							// compute starting points for u,v,w interpolants
-							ui = ul + NM3D_FIXP16_ROUND_UP;
-							vi = vl + NM3D_FIXP16_ROUND_UP;
-							wi = wl + NM3D_FIXP16_ROUND_UP;
+							ds = (sr - sl) / dx;
+							dt = (tr - tl) / dx;
 
-							si = sl + NM3D_FIXP16_ROUND_UP;
-							ti = tl + NM3D_FIXP16_ROUND_UP;
+						} // end if
+						else
+						{
+							du = (ur - ul);
+							dv = (vr - vl);
+							dw = (wr - wl);
 
-							// compute u,v interpolants
-							if ((dx = (xend - xstart))>0)
-							{
-								du = (ur - ul)/dx;
-								dv = (vr - vl)/dx;
-								dw = (wr - wl)/dx;
+							ds = (sr - sl);
+							dt = (tr - tl);
 
-								ds = (sr - sl)/dx;
-								dt = (tr - tl)/dx;
+						} // end else
 
-							} // end if
-							else
-							{
-								du = (ur - ul);
-								dv = (vr - vl);
-								dw = (wr - wl);
+						// draw span
+						for (xi = xstart; xi < xend; xi++)
+						{
+							// write textel assume 5.6.5
+							// screen_ptr[xi] = ( (ui >> (FIXP16_SHIFT+3)) << 11) +
+							//                 ( (vi >> (FIXP16_SHIFT+2)) << 5) +
+							//                   (wi >> (FIXP16_SHIFT+3) );
 
-								ds = (sr - sl);
-								dt = (tr - tl);
-
-							} // end else
-
-							// draw span
-							for (xi=xstart; xi < xend; xi++)
-							{
-								// write textel assume 5.6.5
-								//screen_ptr[xi] = ( (ui >> (FIXP16_SHIFT+3)) << 11) + 
-								//                 ( (vi >> (FIXP16_SHIFT+2)) << 5) + 
-								//                   (wi >> (FIXP16_SHIFT+3) );   
-
-								// get textel first
-								textel = textmap[(si >> NM3D_FIXP16_SHIFT) + ((ti >> NM3D_FIXP16_SHIFT) << texture_shift2)];
+							// get textel first
+							textel = textmap[(si >> NM3D_FIXP16_SHIFT) + ((ti >> NM3D_FIXP16_SHIFT) << texture_shift2)];
 #ifdef NM3D_PIXELFORMAT_565
-								// extract rgb components
-								r_textel  = ((textel >> 11)       ); 
-								g_textel  = ((textel >> 5)  & 0x3f); 
-								b_textel =   (textel        & 0x1f);
+							// extract rgb components
+							r_textel = ((textel >> 11));
+							g_textel = ((textel >> 5) & 0x3f);
+							b_textel = (textel & 0x1f);
 #else // PIXEL_FORMAT555
-								r_textel  = ((textel >> 10) & 0x1f); 
-								g_textel  = ((textel >> 5)  & 0x1f); 
-								b_textel =   (textel        & 0x1f);
+							r_textel = ((textel >> 10) & 0x1f);
+							g_textel = ((textel >> 5) & 0x1f);
+							b_textel = (textel & 0x1f);
 #endif
-								// modulate textel with gouraud shading
-								r_textel*=ui; 
-								g_textel*=vi;
-								b_textel*=wi;
+							// modulate textel with gouraud shading
+							r_textel *= ui;
+							g_textel *= vi;
+							b_textel *= wi;
 
-								// finally write pixel, note that we did the math such that the results are r*32, g*64, b*32
-								// hence we need to divide the results by 32,64,32 respetively, BUT since we need to shift
-								// the results to fit into the destination 5.6.5 word, we can take advantage of the shifts
-								// and they all cancel out for the most part, but we will need logical anding, we will do
-								// it later when we optimize more...
+							// finally write pixel, note that we did the math such that the results are r*32, g*64, b*32
+							// hence we need to divide the results by 32,64,32 respetively, BUT since we need to shift
+							// the results to fit into the destination 5.6.5 word, we can take advantage of the shifts
+							// and they all cancel out for the most part, but we will need logical anding, we will do
+							// it later when we optimize more...
 #ifdef NM3D_PIXELFORMAT_565
-								screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT+8)) + 
-									((g_textel >> (NM3D_FIXP16_SHIFT+8)) << 5) + 
-									((r_textel >> (NM3D_FIXP16_SHIFT+8)) << 11));  
+							screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT + 8)) +
+											  ((g_textel >> (NM3D_FIXP16_SHIFT + 8)) << 5) +
+											  ((r_textel >> (NM3D_FIXP16_SHIFT + 8)) << 11));
 #else
-								screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT+8)) + 
-									((g_textel >> (NM3D_FIXP16_SHIFT+8)) << 5) + 
-									((r_textel >> (NM3D_FIXP16_SHIFT+8)) << 10));  
+							screen_ptr[xi] = ((b_textel >> (NM3D_FIXP16_SHIFT + 8)) +
+											  ((g_textel >> (NM3D_FIXP16_SHIFT + 8)) << 5) +
+											  ((r_textel >> (NM3D_FIXP16_SHIFT + 8)) << 10));
 #endif
-								// interpolate u,v
-								ui+=du;
-								vi+=dv;
-								wi+=dw;
+							// interpolate u,v
+							ui += du;
+							vi += dv;
+							wi += dw;
 
-								si+=ds;
-								ti+=dt;
+							si += ds;
+							ti += dt;
 
-							} // end for xi
+						} // end for xi
 
-							// interpolate u,v,w,x along right and left edge
-							xl+=dxdyl;
-							ul+=dudyl;
-							vl+=dvdyl;
-							wl+=dwdyl;
+						// interpolate u,v,w,x along right and left edge
+						xl += dxdyl;
+						ul += dudyl;
+						vl += dvdyl;
+						wl += dwdyl;
 
-							sl+=dsdyl;
-							tl+=dtdyl;
+						sl += dsdyl;
+						tl += dtdyl;
 
+						xr += dxdyr;
+						ur += dudyr;
+						vr += dvdyr;
+						wr += dwdyr;
 
-							xr+=dxdyr;
-							ur+=dudyr;
-							vr+=dvdyr;
-							wr+=dwdyr;
+						sr += dsdyr;
+						tr += dtdyr;
 
-							sr+=dsdyr;
-							tr+=dtdyr;
+						// advance screen ptr
+						screen_ptr += mem_pitch;
 
+						// test for yi hitting second region, if so change interpolant
+						if (yi == yrestart)
+						{
+							// test interpolation side change flag
 
-							// advance screen ptr
-							screen_ptr+=mem_pitch;
-
-							// test for yi hitting second region, if so change interpolant
-							if (yi==yrestart)
+							if (irestart == NM3D_INTERP_LHS)
 							{
-								// test interpolation side change flag
+								// LHS
+								dyl = (y2 - y1);
 
-								if (irestart == NM3D_INTERP_LHS)
-								{
-									// LHS
-									dyl = (y2 - y1);	
+								dxdyl = ((x2 - x1) << NM3D_FIXP16_SHIFT) / dyl;
+								dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT) / dyl;
+								dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT) / dyl;
+								dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT) / dyl;
 
-									dxdyl = ((x2 - x1)   << NM3D_FIXP16_SHIFT)/dyl;
-									dudyl = ((tu2 - tu1) << NM3D_FIXP16_SHIFT)/dyl;  
-									dvdyl = ((tv2 - tv1) << NM3D_FIXP16_SHIFT)/dyl;   		
-									dwdyl = ((tw2 - tw1) << NM3D_FIXP16_SHIFT)/dyl;   
+								dsdyl = ((ts2 - ts1) << NM3D_FIXP16_SHIFT) / dyl;
+								dtdyl = ((tt2 - tt1) << NM3D_FIXP16_SHIFT) / dyl;
 
+								// set starting values
+								xl = (x1 << NM3D_FIXP16_SHIFT);
+								ul = (tu1 << NM3D_FIXP16_SHIFT);
+								vl = (tv1 << NM3D_FIXP16_SHIFT);
+								wl = (tw1 << NM3D_FIXP16_SHIFT);
 
-									dsdyl = ((ts2 - ts1) << NM3D_FIXP16_SHIFT)/dyl;   		
-									dtdyl = ((tt2 - tt1) << NM3D_FIXP16_SHIFT)/dyl;   
+								sl = (ts1 << NM3D_FIXP16_SHIFT);
+								tl = (tt1 << NM3D_FIXP16_SHIFT);
 
-									// set starting values
-									xl = (x1  << NM3D_FIXP16_SHIFT);
-									ul = (tu1 << NM3D_FIXP16_SHIFT);
-									vl = (tv1 << NM3D_FIXP16_SHIFT);
-									wl = (tw1 << NM3D_FIXP16_SHIFT);
+								// interpolate down on LHS to even up
+								xl += dxdyl;
+								ul += dudyl;
+								vl += dvdyl;
+								wl += dwdyl;
 
-									sl = (ts1 << NM3D_FIXP16_SHIFT);
-									tl = (tt1 << NM3D_FIXP16_SHIFT);
-
-									// interpolate down on LHS to even up
-									xl+=dxdyl;
-									ul+=dudyl;
-									vl+=dvdyl;
-									wl+=dwdyl;
-
-									sl+=dsdyl;
-									tl+=dtdyl;
-
-								} // end if
-								else
-								{
-									// RHS
-									dyr = (y1 - y2);	
-
-									dxdyr = ((x1 - x2)   << NM3D_FIXP16_SHIFT)/dyr;
-									dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT)/dyr;  
-									dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT)/dyr;   		
-									dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT)/dyr;   
-
-									dsdyr = ((ts1 - ts2) << NM3D_FIXP16_SHIFT)/dyr;   		
-									dtdyr = ((tt1 - tt2) << NM3D_FIXP16_SHIFT)/dyr;   
-
-									// set starting values
-									xr = (x2  << NM3D_FIXP16_SHIFT);
-									ur = (tu2 << NM3D_FIXP16_SHIFT);
-									vr = (tv2 << NM3D_FIXP16_SHIFT);
-									wr = (tw2 << NM3D_FIXP16_SHIFT);
-
-									sr = (ts2 << NM3D_FIXP16_SHIFT);
-									tr = (tt2 << NM3D_FIXP16_SHIFT);
-
-									// interpolate down on RHS to even up
-									xr+=dxdyr;
-									ur+=dudyr;
-									vr+=dvdyr;
-									wr+=dwdyr;
-
-									sr+=dsdyr;
-									tr+=dtdyr;
-
-								} // end else
+								sl += dsdyl;
+								tl += dtdyl;
 
 							} // end if
+							else
+							{
+								// RHS
+								dyr = (y1 - y2);
 
-						} // end for y
+								dxdyr = ((x1 - x2) << NM3D_FIXP16_SHIFT) / dyr;
+								dudyr = ((tu1 - tu2) << NM3D_FIXP16_SHIFT) / dyr;
+								dvdyr = ((tv1 - tv2) << NM3D_FIXP16_SHIFT) / dyr;
+								dwdyr = ((tw1 - tw2) << NM3D_FIXP16_SHIFT) / dyr;
 
-					} // end else	
+								dsdyr = ((ts1 - ts2) << NM3D_FIXP16_SHIFT) / dyr;
+								dtdyr = ((tt1 - tt2) << NM3D_FIXP16_SHIFT) / dyr;
+
+								// set starting values
+								xr = (x2 << NM3D_FIXP16_SHIFT);
+								ur = (tu2 << NM3D_FIXP16_SHIFT);
+								vr = (tv2 << NM3D_FIXP16_SHIFT);
+								wr = (tw2 << NM3D_FIXP16_SHIFT);
+
+								sr = (ts2 << NM3D_FIXP16_SHIFT);
+								tr = (tt2 << NM3D_FIXP16_SHIFT);
+
+								// interpolate down on RHS to even up
+								xr += dxdyr;
+								ur += dudyr;
+								vr += dvdyr;
+								wr += dwdyr;
+
+								sr += dsdyr;
+								tr += dtdyr;
+
+							} // end else
+
+						} // end if
+
+					} // end for y
+
+				} // end else
 
 			} // end if
 

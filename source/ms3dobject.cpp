@@ -55,7 +55,7 @@ namespace Nomad3D
 
 		//////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////
-		int i=0, j=0;
+		unsigned int i=0, j=0;
 
 		//Read the vertices
 		m_unNumVerts = *(unsigned short *)ucpPtr;
@@ -90,7 +90,6 @@ namespace Nomad3D
 		m_unNumMeshes = *(unsigned short *)ucpPtr;
 		ucpPtr += 2;
 		m_pMeshList = new CMesh[m_unNumMeshes];
-		unsigned short* pus=NULL;
 		unsigned short usNumPolys=0;
 		NM3D_DEBUG_PRINT(NM3D_DEBUG_COLOR_BLUE,"Total Meshes is : %d",m_unNumMeshes);
 		for(i=0; i<m_unNumMeshes; i++)
@@ -284,7 +283,7 @@ namespace Nomad3D
 
 	bool CMS3DObject::SetupSkeleton()
 	{
-		int i=0;
+		unsigned int i=0;
 	
 		if(m_unNumJoints <= 0)
 			return false;		
@@ -316,7 +315,7 @@ namespace Nomad3D
 			if(nBoneID == NM3D_JOINT_NO_PARENT)
 				continue;
 			
-			pMat = & (m_pJointList[m_pVertList[i].GetBone()].m_matFinal);
+			pMat = & (m_pJointList[(int)m_pVertList[i].GetBone()].m_matFinal);
 
 			CMatrix4 im;
 			im.Inverse(*pMat);
@@ -416,13 +415,14 @@ namespace Nomad3D
 	void CMS3DObject::SetPolygonMaterialAndVertList()
 	{
 		// 1. Set Polygon Material
-		int i=0,j=0;
+		unsigned int i=0;
+		unsigned short j=0;
 		CMesh* pMesh = NULL;
 		CMaterial* pMaterial = NULL;
 		for(i=0; i<m_unNumMeshes; i++)
 		{
 			pMesh = &(m_pMeshList[i]);
-			pMaterial = &(m_pMaterialList[pMesh->m_cMaterial]);
+			pMaterial = &(m_pMaterialList[(int)pMesh->m_cMaterial]);
 			for(j=0; j<pMesh->m_usNumPolys; j++)
 			{
 				m_pPolyList[pMesh->m_pusIndices[j]].m_pMaterial = pMaterial;

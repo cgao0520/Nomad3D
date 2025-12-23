@@ -69,8 +69,8 @@ namespace Nomad3D
 
 	void CRenderList::BuildMemory()
 	{
-		int i=0,nv=0,np=0;
-		int NV=0,NP=0;
+		unsigned int nv=0,np=0;
+		unsigned int NV=0,NP=0;
 		CObject* pObj = NULL;
 		CObjectList::iterator it_end = m_ObjectList.end();
 		CObjectList::iterator it;
@@ -108,7 +108,7 @@ namespace Nomad3D
 		}
 
 		//////////////////////////////////////////////////////////////////////////
-		for(int _i=0; _i<NP; _i++)
+		for(unsigned int _i=0; _i<NP; _i++)
 		{
 			m_ppPL[_i] = m_pPolyList + _i;
 		}
@@ -121,12 +121,20 @@ namespace Nomad3D
 			pObj = (*it);
 			if(pObj != NULL)
 			{
-				memcpy(m_pVertList, pObj->m_pVertListTran, pObj->m_unNumVerts*sizeV);
+				//memcpy(m_pVertList, pObj->m_pVertListTran, pObj->m_unNumVerts*sizeV);
+				for (unsigned int i = 0; i < pObj->m_unNumVerts; i++)
+				{
+					m_pVertList[i] = pObj->m_pVertListTran[i];
+				}
 				nv = pObj->m_unNumVerts;
-				memcpy(m_pPolyList, pObj->m_pPolyList, pObj->m_unNumPolys*sizeP);
+				//memcpy(m_pPolyList, pObj->m_pPolyList, pObj->m_unNumPolys*sizeP);
+				for (unsigned int i = 0; i < pObj->m_unNumPolys; i++)
+				{
+					m_pPolyList[i] = pObj->m_pPolyList[i];
+				}
 				np = pObj->m_unNumPolys;
 
-				for(i=0; i<np; i++)
+				for(unsigned int i=0; i<np; i++)
 				{
 					m_pPolyList[i].m_pVertList = m_pVertList;
 				}
@@ -135,7 +143,7 @@ namespace Nomad3D
 				CMatrix4* pMat = *itMatrix;
 				if(pMat != NULL && *pMat != matIdentity)
 				{
-					for(i=0; i<nv; i++)
+					for(unsigned int i=0; i<nv; i++)
 					{
 						m_pVertList[i] *= *pMat;
 					}
@@ -146,10 +154,18 @@ namespace Nomad3D
 			for(it++, itMatrix++; it != it_end; it++, itMatrix++)
 			{
 				pObj = (*it);
-				memcpy(m_pVertList+nv, pObj->m_pVertListTran, pObj->m_unNumVerts*sizeV);
-				memcpy(m_pPolyList+np, pObj->m_pPolyList, pObj->m_unNumPolys*sizeP);
+				//memcpy(m_pVertList+nv, pObj->m_pVertListTran, pObj->m_unNumVerts*sizeV);
+				//memcpy(m_pPolyList+np, pObj->m_pPolyList, pObj->m_unNumPolys*sizeP);
+				for (unsigned int i = 0; i < pObj->m_unNumVerts; i++)
+				{
+					m_pVertList[nv + i] = pObj->m_pVertListTran[i];
+				}
+				for (unsigned int i = 0; i < pObj->m_unNumPolys; i++)
+				{
+					m_pPolyList[np + i] = pObj->m_pPolyList[i];
+				}
 
-				for(i=0; i<pObj->m_unNumPolys; i++)
+				for(unsigned int i=0; i<pObj->m_unNumPolys; i++)
 				{
 					m_pPolyList[np+i].m_usVertIndices[0] += nv;
 					m_pPolyList[np+i].m_usVertIndices[1] += nv;
@@ -163,7 +179,7 @@ namespace Nomad3D
 				CMatrix4* pMat = *itMatrix;
 				if(pMat != NULL && *pMat != matIdentity)
 				{
-					for(i=nv; i<nv+pObj->m_unNumVerts; i++)
+					for(unsigned int i=nv; i<nv+pObj->m_unNumVerts; i++)
 					{
 						m_pVertList[i] *= *pMat;
 					}
@@ -174,16 +190,17 @@ namespace Nomad3D
 
 	void CRenderList::MultMatrix4(const CMatrix4& m)
 	{
-		int i=0;
+		unsigned int i=0;
 		for(; i<m_unNumVerts; i++)
 		{
 			m_pVertList[i] *= m;
-
+/*
 			if(m_pVertList[i][0]>1)
 			{
 				int a;
 				a=10;
 			}
+*/
 		}
 
 	}
@@ -192,7 +209,7 @@ namespace Nomad3D
 	{
 		CVertex4* pVert = NULL;
 		float w;
-		for(int i=0; i<m_unNumVerts; i++)
+		for(unsigned int i=0; i<m_unNumVerts; i++)
 		{
 			pVert = m_pVertList+i;
 			w = pVert->v_[3];
@@ -337,7 +354,8 @@ namespace Nomad3D
 
 		float x1,y1,z1,x2,y2,z2,x3,y3,z3;
 		unsigned char r1,g1,b1,r2,g2,b2,r3,g3,b3;
-		int i=0;int v1=0,v2=1,v3=2;
+		unsigned int i=0;
+		int v1=0,v2=1,v3=2;
 		float t1,t2;
 		bool bTexture = false;
 		CPolygon* pPoly = NULL;

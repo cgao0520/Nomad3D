@@ -63,14 +63,17 @@ namespace Nomad3D
 
 		void AssignWithInitVertexNormal(CVertex4* pVertList, const unsigned short* pusVIndices, const float* pVNormals, const float* pTCoords)
 		{
-			memcpy(m_usVertIndices,pusVIndices,sizeof(m_usVertIndices));
-			CVector3 vNormals[3];
-			memcpy(vNormals, pVNormals, sizeof(vNormals));
-			memcpy(m_fTexCoords,pTCoords,sizeof(m_fTexCoords));
+			memcpy(m_usVertIndices, pusVIndices, sizeof(m_usVertIndices));
 
-			pVertList[m_usVertIndices[0]].m_vNormal = vNormals[0];
-			pVertList[m_usVertIndices[1]].m_vNormal = vNormals[1];
-			pVertList[m_usVertIndices[2]].m_vNormal = vNormals[2];
+			CVector3 vNormal0(pVNormals);
+			CVector3 vNormal1(pVNormals + 3);
+			CVector3 vNormal2(pVNormals + 6);
+			
+			memcpy(m_fTexCoords, pTCoords, sizeof(m_fTexCoords));
+
+			pVertList[m_usVertIndices[0]].m_vNormal = vNormal0;
+			pVertList[m_usVertIndices[1]].m_vNormal = vNormal1;
+			pVertList[m_usVertIndices[2]].m_vNormal = vNormal2;
 
 			InitData();
 		}

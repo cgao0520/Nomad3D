@@ -164,12 +164,10 @@ namespace Nomad3D
 // 		if (pObj->m_nState is culled)
 // 			return 0;
 
-		int i=0,j=0;
+		unsigned int i = 0;
+		int j = 0;
 		int nNumPolys;
 		CPolygon* pPoly = NULL;
-		CMaterial* pMaterial = NULL; 
-		_Light*	pLight = NULL;
-		CVertex4* pVertList = pObj->m_pVertListTran;
 
 		int nNumVerts = pObj->GetNumVerts();
 		m_pnTempLightVertexList = new int[nNumVerts];
@@ -179,7 +177,6 @@ namespace Nomad3D
 		for(i=0; i<pObj->m_unNumMeshes; i++)
 		{
 			CMesh* pMesh = pObj->m_pMeshList + i;
-			pMaterial = pObj->m_pMaterialList + pMesh->m_cMaterial; 
 			nNumPolys = pMesh->m_usNumPolys;
 
 			for(j=0; j<nNumPolys; j++)
@@ -459,7 +456,7 @@ namespace Nomad3D
 			CRGBA res_specular_color(MIN(specular_r,255),MIN(specular_g,255),MIN(specular_b,255),pPoly->m_rgbaSpecular[i].a());
 			pPoly->m_rgbaSpecular[i] = res_specular_color;
 			m_prgbaTempColor[(pPoly->m_usVertIndices[i]<<1)+1] = res_specular_color;
-#else if (NM3D_LIGHT_SPECULAR_ON) && !(NM3D_LIGHT_SEPARATE_SPECULAR)
+#elif (NM3D_LIGHT_SPECULAR_ON) && !(NM3D_LIGHT_SEPARATE_SPECULAR)
 			clr_r += specular_r;
 			clr_g += specular_g;
 			clr_b += specular_b;

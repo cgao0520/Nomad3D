@@ -52,8 +52,6 @@ void CTestPicture::Draw(int n)
 	CMatrix4::Translate(0,-30,-10,mT);
 	//CMatrix4::Translate(0,-5,30,mT);
 	m*=mT;
-
-	int i=0;
 //////////////////////////////////////////////////////////////////////////
 #if 1
 	float fStartTime = 0.0f;
@@ -91,7 +89,6 @@ void CTestPicture::Draw(int n)
 			fTime = fEndTime;
 	}
 
-	int j=0;
 	//int nObjs=m_ObjectList.size();
 	int nNumJoints = pObject->GetNumJoints();
 	CJoint* pJointList = pObject->GetJointList();
@@ -101,7 +98,7 @@ void CTestPicture::Draw(int n)
 	CMatrix4 matRot;
 	CMatrix4 matFinal;
 	
-	for(i=0; i<nNumJoints; i++)
+	for(int i=0; i<nNumJoints; i++)
 	{
 		pJoint = &(pJointList[i]);
 		uiFrame = 0;
@@ -192,13 +189,13 @@ void CTestPicture::Draw(int n)
 	CVertex4* pVtListTran = pObject->GetVertListTran();
 	CVertex4* pVt;
 	CVertex4 vt;
-	for(i=0; i<nNVt; i++)
+	for(unsigned int i=0; i<nNVt; i++)
 	{
 		pVt = &(pVtList[i]);
 		
 		if(pVt->GetBone() != NM3D_JOINT_NO_PARENT)
 		{
-			pJoint = &(pJointList[pVt->GetBone()]);
+			pJoint = &(pJointList[(int)pVt->GetBone()]);
 			pVtListTran[i] = (*pVt) * pJoint->m_matFinal;
 		}
 		else
@@ -238,7 +235,7 @@ void CTestPicture::Draw(int n)
 
 	//m_pScene->LightScene(&light,&m_pScene->m_Camera);
 	
-	int nNumVerts = renderlist.GetNumVerts();
+	//int nNumVerts = renderlist.GetNumVerts();
 	int nNumPolys = renderlist.GetNumPolys();
 	const CVertex4* pVertList = renderlist.GetVertList();
 	CPolygon** ppL = renderlist.GetSortedPPL();
@@ -257,7 +254,7 @@ void CTestPicture::Draw(int n)
 	/*const*/ CPolygon* pPoly = NULL;
 
 	int rendered_polygons = 0;
-	for(i=0; i<nNumPolys; i++)
+	for(int i=0; i<nNumPolys; i++)
 	{
 		pPoly = ppL[i];
 

@@ -17,8 +17,7 @@ namespace Nomad3D
 	class CMatrix4
 	{
 		friend class CQuaternion;
-	//public:
-		typedef float CMatrix4_MX[4][4] ;
+		typedef float CMatrix4_MX[4][4];
 		
     protected:
         float m_[4][4];
@@ -472,9 +471,9 @@ namespace Nomad3D
 	
 	inline CMatrix4& CMatrix4::operator *=(const CMatrix4& m)
 	{
-		const CMatrix4_MX& mm=m.m_;
+		const CMatrix4_MX& mm = m.m_;
 		CMatrix4 rm;
-		CMatrix4_MX& rmm=rm.m_;
+		CMatrix4_MX& rmm = rm.m_;
 		
 		rmm[0][0] = m_[0][0]*mm[0][0] + m_[0][1]*mm[1][0] + m_[0][2]*mm[2][0] + m_[0][3]*mm[3][0];
 		rmm[0][1] = m_[0][0]*mm[0][1] + m_[0][1]*mm[1][1] + m_[0][2]*mm[2][1] + m_[0][3]*mm[3][1];
@@ -496,7 +495,8 @@ namespace Nomad3D
 		rmm[3][2] = m_[3][0]*mm[0][2] + m_[3][1]*mm[1][2] + m_[3][2]*mm[2][2] + m_[3][3]*mm[3][2];
 		rmm[3][3] = m_[3][0]*mm[0][3] + m_[3][1]*mm[1][3] + m_[3][2]*mm[2][3] + m_[3][3]*mm[3][3];
 		
-		memcpy(m_, rmm, sizeof(m_));
+		//memcpy(m_, rmm, sizeof(m_));
+		std::copy(&rmm[0][0], &rmm[0][0] + 16, &m_[0][0]);
 		
 		return *this;
 	}

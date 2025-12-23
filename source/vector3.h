@@ -18,12 +18,7 @@ namespace Nomad3D
 			v_[0] = v_[1] = v_[2] = 0;
 		}
 		~CVector3(){}
-/*
-		inline CVector3(const CVector3& v)
-		{
-			v_[0] = v.v_[0]; v_[1] = v.v_[1]; v_[2] = v.v_[2];
-		}
-*/
+
 		inline CVector3(float x, float y, float z)
 		{
 			v_[0] = x; v_[1] = y; v_[2] = z;
@@ -34,7 +29,7 @@ namespace Nomad3D
 			v_[0] = pv[0]; v_[1] = pv[1]; v_[2] = pv[2];
 		}
 		
-		// Componant Access:
+		// Component Access:
 		
 		inline float x() const {return v_[0];}
 		
@@ -48,12 +43,12 @@ namespace Nomad3D
 		{
 			return v_[i];
 		}
-		
+
 		inline const float& operator [](int i) const
 		{
 			return v_[i];
 		}
-		
+
 		// ASSIGNMENT
 		
 		inline CVector3& Assign(float x, float y, float z)
@@ -66,13 +61,7 @@ namespace Nomad3D
 		{
 			v_[0] = pv[0]; v_[1] = pv[1]; v_[2] = pv[2];
 		}
-/**
-		inline CVector3& operator =(const CVector3& v)
-		{
-			v_[0] = v[0]; v_[1] = v[1]; v_[2] = v[2];
-			return *this;
-		}
-*/
+
 		// MATH OPERATORS
 		
 		inline CVector3& operator +=(const CVector3& v)
