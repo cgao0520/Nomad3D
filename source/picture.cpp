@@ -84,20 +84,9 @@ namespace Nomad3D
 		m_pScene = (CScene*)scn;
 	}
 
-	void CPicture::SetCamera(const CCamera& cam)
-	{
-		m_Camera = cam;
-	}
-
 	void CPicture::SetBGTrans(unsigned char a)
 	{
 		m_cBGTrans = a;
-	}
-
-	void CPicture::ResetTimer()
-	{
-		m_Timer.Init();
-		m_Timer.GetSeconds();
 	}
 
 	//draw a picture on the screen!!!

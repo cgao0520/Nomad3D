@@ -2,11 +2,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_)
-#define AFX_TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_
-
-
-#include "nomad3d.h"
+#if !defined(_TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_)
+#define _TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_
 
 #if defined(NM3D_PLATFORM_LINUX)
 #include <time.h>
@@ -50,4 +47,4 @@ namespace Nomad3D
 #endif
 }
 
-#endif // !defined(AFX_TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_)
+#endif // !defined(_TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_)

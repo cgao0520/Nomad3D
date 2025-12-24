@@ -21,6 +21,12 @@ CTestPicture::~CTestPicture()
 
 //////////////////////////////////////////////////////////////////////////
 
+void CTestPicture::ResetTimer()
+{
+	m_Timer.Init();
+	m_Timer.GetSeconds();
+}
+
 void CTestPicture::Draw(int n)
 {
 	CRender::ERenderType eRT = render.GetRenderType();

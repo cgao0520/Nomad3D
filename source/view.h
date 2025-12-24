@@ -5,6 +5,7 @@
 #include "platform.h"
 #include "constant.h"
 #include "clipbox.h"
+#include "rgb.h"
 
 namespace Nomad3D
 {

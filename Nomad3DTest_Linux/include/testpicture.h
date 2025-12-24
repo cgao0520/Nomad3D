@@ -7,6 +7,7 @@
 
 #include "nomad3d.h"
 #include <list>
+#include "timer.h"
 
 using namespace Nomad3D;
 
@@ -17,6 +18,7 @@ public:
 	virtual ~CTestPicture();
 	void Draw(int n=0);
 	//////////////////////////////////////////////////////////////////////////
+	void ResetTimer();
 	inline void AddObject(CObject* pObject)
 	{
 		if(pObject)
@@ -26,6 +28,7 @@ public:
 	}
 private:
 	std::list<CObject*>	m_ObjectList;
+	CTimer				m_Timer;
 };
 
 #endif // __TESTPICTURE_H__

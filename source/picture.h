@@ -31,18 +31,14 @@ namespace Nomad3D
 		void SetCamera(const CCamera& cam);
 		void SetBGTrans(unsigned char a=0);
 		//////////////////////////////////////////////////////////////////////////
-		void ResetTimer();
 		virtual void Draw(int n=0);/*the most important function!!!*/
 	protected:
 		void GeneratePictureMatrix();
 	protected:
 		CViewInfo	m_ViewInfo;
 		CScene*		m_pScene;
-		CCamera		m_Camera;
 		CMatrix4	m_matPictureMatrix;	//Perspective to View
 		unsigned char m_cBGTrans; //Background Transparency
-
-		CTimer		m_Timer;
 	};
 }
 
