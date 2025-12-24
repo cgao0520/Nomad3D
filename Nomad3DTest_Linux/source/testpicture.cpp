@@ -221,7 +221,8 @@ void CTestPicture::Draw(int n)
 	
 	//renderlist.MultMatrix4(m_pScene->GetCamera()->GetCameraMatrix());
 	renderlist.MultMatrix4(m_pScene->GetCamera()->GetUVNMatrix());
-	//�Ӿ���ü�
+
+	// View Frustum Clipping
 	int nCulledPolygons = 0;
 	nCulledPolygons = renderlist.CullAndClip(m_pScene->GetCamera());
 

@@ -51,8 +51,8 @@ void GameInit()
 */
 	cam.LookAt(eye,look,up);
 	cam.SetPerspective(90, float(NM3D_WINDOW_WIDTH*1.0/NM3D_WINDOW_HEIGHT), .1f, 250);
-	cam2.LookAt(eye,look,up);
-	cam2.SetPerspective(90, float(200*1.0/200), 1.1f, 150);
+	//cam2.LookAt(eye,look,up);
+	//cam2.SetPerspective(90, float(200*1.0/200), 1.1f, 150);
 	cam2.LookAt(eye,look,up);
 	cam2.SetPerspective(90, float(200*1.0/100), 1.1f, 150);
 
@@ -230,27 +230,7 @@ int main(int argc, char* argv[])
                 }
             }
         }        
-/*
-        render.m_canvas.ClearCanvas();
 
-        uint16_t color = (31 << 11) | (0 << 5) | (0); // Red in RGB565
-        
-        for (int y = 100; y < 200; y++)
-        {
-            for (int x = (int)x_pos; x < (int)x_pos + 100; x++)
-            {
-                if (x >= 0 && x < NM3D_WINDOW_WIDTH)
-                {
-                    canvas[y * NM3D_WINDOW_WIDTH + x] = color;
-                }
-            }
-        }
-
-        render.m_canvas.BitBlt();
-
-        x_pos += 10.0f;
-        if (x_pos > NM3D_WINDOW_WIDTH) x_pos = -100;
-*/
         GameLoop();
         // Cap at ~60 FPS
         //SDL_Delay(16);
