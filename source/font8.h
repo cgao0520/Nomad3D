@@ -1,6 +1,8 @@
-// Font.cpp: implementation of the CFont class.
+// font8.h: a subclass of CFont, offers 8 * 8 pixel characters
 //
 //////////////////////////////////////////////////////////////////////
+#ifndef __FONT8_H__
+#define __FONT8_H__
 
 #include "font.h"
 #include "../font/5_7font.h"
@@ -16,7 +18,7 @@ namespace Nomad3D
 	{
 	public:
 		CFont8(unsigned char* pBuff):CFont(pBuff){};
-		inline int DrawChar(int nRow, int nCol, int nIndex, CRGBA color,  NM3D_BUFFER buffer)
+		int DrawChar(int nRow, int nCol, int nIndex, CRGBA color,  NM3D_BUFFER buffer)
 		{
 			// Return 3 if space, without no drawing and also no erasing
 			if( nIndex == ' ' - FONT8_ASC_START )
@@ -128,3 +130,5 @@ namespace Nomad3D
 		}
 	};
 }
+
+#endif // __FONT8_H__

@@ -38,15 +38,16 @@ namespace Nomad3D
 #endif
 		m_pBuff = m_dib.GetBits();
 #elif defined (NM3D_PLATFORM_LINUX)
-		m_pBuff = (unsigned char*)m_canvas.GetCanvas();
+		//m_pBuff = (unsigned char*)m_canvas.GetCanvas();
 #elif defined(NM3D_PLATFORM_NDS)
 		//u16* frontBuffer = (u16*)(0x06000000);
 		//u16* backBuffer =  (u16*)(0x06000000 + 256 * 256 * 2);
 		m_pBuff = (unsigned char*)backBuffer;
 #endif
+/*
 		m_pBuff16 = (unsigned short*)m_pBuff;
 		m_pBuff32 = (unsigned int*)m_pBuff;
-
+*/
 		m_pFont = new CFont8(m_pBuff);
 
 		m_pMaterial = NULL;//default material is NULL
@@ -134,7 +135,7 @@ namespace Nomad3D
 #if defined(NM3D_PLATFORM_WIN32)
 		m_dib.BitBlt(m_dc,0,0,NM3D_WINDOW_WIDTH,NM3D_WINDOW_HEIGHT,0,0);
 #elif defined(NM3D_PLATFORM_LINUX)
-		m_canvas.BitBlt();
+		m_pCanvas->BitBlt();
 #elif defined(NM3D_PLATFORM_NDS)
 		unsigned char* temp = backBuffer;
 		backBuffer = frontBuffer;
@@ -161,6 +162,15 @@ namespace Nomad3D
 	void CRender::SetRenderType(ERenderType enRT)
 	{
 		m_enRenderType = enRT;
+	}
+
+	void CRender::SetCanvas(CCanvas* pCanvas)
+	{
+		m_pCanvas = pCanvas;
+
+		m_pBuff = (unsigned char*)m_pCanvas->GetCanvas();
+		m_pBuff16 = (unsigned short*)m_pBuff;
+		m_pBuff32 = (unsigned int*)m_pBuff;
 	}
 
 	void CRender::DrawTriangle(float poly[3][3])

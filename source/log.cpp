@@ -11,6 +11,8 @@
 #include <ctime>
 #elif defined(NM3D_PLATFORM_LINUX)
 #include <time.h>
+#else
+#error "This platform doesn't support log!"
 #endif
 
 #if NM3D_DEBUG_ON

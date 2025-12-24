@@ -11,6 +11,10 @@
 
 namespace Nomad3D
 {
+
+#define NM3D_LIGH_UNLIGHTED_VERTEX	0
+#define NM3D_LIGH_LIGHTED_VERTEX	1
+
 	CLight light;
 
 	CLight::CLight()
@@ -95,7 +99,7 @@ namespace Nomad3D
 		} 
 		
 		m_LightList[index]->spot_angle  = Cos(_spot_angle); // angle for spot light
-		m_LightList[index]->pf          = _pf;         // power factor/falloff for spot lights
+		m_LightList[index]->pf          = _pf; // power factor/falloff for spot lights
 		
 		m_nNumLights++;
 		

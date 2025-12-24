@@ -63,4 +63,3 @@ namespace Nomad3D
 			return NM3D_FULL_IN_FRUSTUM;
 	}
 }
-

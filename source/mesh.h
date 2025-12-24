@@ -6,6 +6,7 @@
 #define MESH_H_F2468E5D_8F32_44E8_ACE4_5A9F725B6D88
 
 #include "light.h"
+#include <cstring>
 
 namespace Nomad3D
 {

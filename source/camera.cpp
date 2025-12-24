@@ -13,25 +13,8 @@ namespace Nomad3D
 {
 	CCamera::CCamera()
 	{
-
 	}
 	
-// 	CCamera::~CCamera()
-// 	{
-// 		
-// 	}
-/*
-	CCamera::CCamera(const CCamera& cam)
-	{
-		memcpy(this,&cam,sizeof(CCamera));
-	}
-
-	CCamera& CCamera::operator = (const CCamera& cam)
-	{
-		memcpy(this,&cam,sizeof(CCamera));
-		return *this;
-	}
-*/
 	void CCamera::Pitch(float angle)
 	{
 		CMatrix4 m;

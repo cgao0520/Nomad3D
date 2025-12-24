@@ -114,7 +114,7 @@ namespace Nomad3D
 		CDIB	m_dib;
 		HDC		m_dc;
 #elif defined(NM3D_PLATFORM_LINUX)
-		CCanvas			m_canvas;
+		CCanvas*		m_pCanvas;
 #elif defined(NM3D_PLATFORM_NDS)
 		unsigned short* frontBuffer = (unsigned short*)(0x06000000);
 		unsigned short* backBuffer =  (unsigned short*)(0x06000000 + 256 * 256 * 2);
@@ -125,6 +125,7 @@ namespace Nomad3D
 		CRender();
 		virtual ~CRender();
 	public:
+		void SetCanvas(CCanvas* pCanvas);
 		void SetRenderType(ERenderType enRT);
 		void SetClipBox(const CClipBox& cb);
 		void SetClearColor(CRGBA rgba);

@@ -16,15 +16,11 @@ namespace Nomad3D
         NM3D_BUFFER GetCanvas();
         int GetCanvasPitch();
         void ClearCanvas();
-        void BitBlt();
+        virtual void BitBlt();
 
     protected:
         NM3D_BUFFER m_pCanvas;
-        SDL_Window* m_pSDLWindow;
-        SDL_Renderer* m_pSDLRenderer;
-        SDL_Texture* m_pSDLTexture;
     };
 }
-
 
 #endif // __CANVAS_H__

@@ -29,16 +29,12 @@ namespace Nomad3D
 		
 		enum ELightType
 		{
-			NM3D_LIGHT_TYPE_DIRECTION,	//ƽ�й�
-			NM3D_LIGHT_TYPE_POINT,		//���Դ
-			NM3D_LIGHT_TYPE_SPOT		//�۹��
+			NM3D_LIGHT_TYPE_DIRECTION,	// Directional light
+			NM3D_LIGHT_TYPE_POINT,		// Point light
+			NM3D_LIGHT_TYPE_SPOT		// Spotlight
 		};
+
 	private:
-
-#define NM3D_LIGH_UNLIGHTED_VERTEX	0
-#define NM3D_LIGH_LIGHTED_VERTEX	1
-
-		//��Դ
 		class _Light
 		{
 		public:
@@ -61,7 +57,8 @@ namespace Nomad3D
 	public:
 		CLight();
 		~CLight();
-		//�����ɹ����ظձ������Ĺ�Դ�Ĺ�Դ�ı��(Ҳ���ܵĹ�Դ��),ʧ���򷵻�-1
+
+		// If successful, returns the ID of the newly created light source (which is also the total count of light sources); otherwise, returns -1
 		int CreateLight(
 			ELightState	_state,      // state of light
 			ELightType	_attr,       // type of light, and extra qualifiers

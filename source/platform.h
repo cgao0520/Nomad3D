@@ -35,7 +35,6 @@
 
 #elif defined(NM3D_PLATFORM_LINUX)
 
-#include <SDL2/SDL.h>
 #include <stdint.h>
 
 #define UINT		uint32_t

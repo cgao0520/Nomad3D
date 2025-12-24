@@ -2,8 +2,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_FONT_H__9DA912C9_F93E_4ED9_BD51_672A30C1BDE6__INCLUDED_)
-#define AFX_FONT_H__9DA912C9_F93E_4ED9_BD51_672A30C1BDE6__INCLUDED_
+#if !defined(_FONT_H__9DA912C9_F93E_4ED9_BD51_672A30C1BDE6__INCLUDED_)
+#define _FONT_H__9DA912C9_F93E_4ED9_BD51_672A30C1BDE6__INCLUDED_
 
 #include "rgb.h"
 
@@ -73,4 +73,4 @@ namespace Nomad3D
 		CRGBA		m_rgbText;
 	};
 }
-#endif // !defined(AFX_FONT_H__9DA912C9_F93E_4ED9_BD51_672A30C1BDE6__INCLUDED_)
+#endif // !defined(_FONT_H__9DA912C9_F93E_4ED9_BD51_672A30C1BDE6__INCLUDED_)

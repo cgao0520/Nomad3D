@@ -4,6 +4,7 @@
 #include <stdlib.h> // For malloc/free
 #include "nomad3d.h"
 #include "testpicture.h"
+#include "sdlcanvas.h"
 
 using namespace Nomad3D;
 
@@ -26,8 +27,13 @@ CPoint3 eye(0,0,45);
 CPoint3 look(0,0,-1000);
 CVector3 up(0,1,0);
 
+CSDLCanvas canvas;
+
 void GameInit()
 {
+    canvas.Init();
+    render.SetCanvas(&canvas);
+
 	//bool b=obj.ReadObjectFile("butterfly.ms3d");
 	//bool b=obj.ReadObjectFile("ABC.ms3d");
 	//bool b=obj.ReadObjectFile("Desklamp.ms3d");
@@ -90,7 +96,7 @@ void GameInit()
 	//CPoint4 pos(0,40,15);
 	//CVector3 dir(10,10,20);
 	CPoint4 pos(0,0,0);
-	CVector3 dir(1,0.7f,0);//¹âÔŽ·œÏòÎªdir-Ô­µãµÄÏòÁ¿µÄ·œÏò
+	CVector3 dir(1,0.7f,0); // Light direction is defined by the vector (dir - origin)
     CRGBA amb(50,50,50);
 	light.SetGlobalAmbient(amb);
 	light.CreateLight(CLight::NM3D_LIGHT_STATE_ON,CLight::NM3D_LIGHT_TYPE_DIRECTION,CRGBA(20,20,20),CRGBA(100,100,100),CRGBA(255,255,255),
@@ -105,7 +111,6 @@ void GameLoop()
 {
 	//Start_Clock();
 	//render.ClearVBuffer();
-    render.m_canvas.ClearCanvas();
 	player1.ShowPicture(-1);
 	render.Flip();
 	//Wait_Clock(FPS_60);
@@ -117,8 +122,6 @@ int main(int argc, char* argv[])
     (void)argv;
 
     GameInit();
-
-    //uint16_t* canvas = render.m_canvas.GetCanvas();
 
     bool running = true; 
     SDL_Event e;

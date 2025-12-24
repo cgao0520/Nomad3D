@@ -7,7 +7,6 @@
 #define NM3D_WINDOW_WIDTH						1024 // window width
 #define NM3D_WINDOW_HEIGHT						768 // window height
 
-//#define NM3D_LOGFILE_ON						1
 #define NM3D_DEBUG_ON							1 // (0/1) if 1: print debug info to log file
 #define NM3D_LIGHT_SPECULAR_ON					1 // (0/1) if 1: light with specular part(turn it off can boost run efficiency)
 #define NM3D_LIGHT_SEPARATE_SPECULAR			1 // (0/1) if 1: light the specular part in separate and independent color in CPolygon class
@@ -18,15 +17,13 @@
 //#define NM3D_MAX_PLAYER_COUNT					4 // max number of player within one application
 #define NM3D_MAX_LIGHT_COUNT					4 // max number of lights within one light model
 
-//PIXEL_FORMAT555��PIXEL_FORMAT565���趨��һ��
-
-#define NM3D_PIXELFORMAT_R_LOW					0 // ����Ӳ����RGB��ʽ��R����λ�ڵ�λ,����Windows,R�ڸ�λ,NDS��R�ڵ�λ
+// Define the hardware RGB format where the Red (R) component is in the low-order bits.
+// For Windows, R is in the high-order bits; for NDS, R is in the low-order bits
+#define NM3D_PIXELFORMAT_R_LOW					0
 //#define NM3D_PIXELFORMAT_888
 //#define NM3D_PIXELFORMAT_555
 #define NM3D_PIXELFORMAT_565
 
-
-//ȷ����PIXEL_FORMAT555��PIXEL_FORMAT565������ʱֻ��һ����Ч
 #ifdef NM3D_PIXELFORMAT_555
 	#undef NM3D_PIXELFORMAT_565
 	#undef NM3D_PIXELFORMAT_888
