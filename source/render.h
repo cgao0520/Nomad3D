@@ -11,6 +11,7 @@
 #include "clipbox.h"
 #include "zbuffer.h"
 #include "canvas.h"
+#include <cstring>
 
 #ifdef NM3D_PLATFORM_WIN32
 #include "../platform/win32/DIB.h"
@@ -171,7 +172,7 @@ namespace Nomad3D
 		void DrawText(int x,int y,const char* p);
 
 #if defined(NM3D_PIXELFORMAT_555) || defined(NM3D_PIXELFORMAT_565)
-		inline NM3D_BUFFER GetBuffer()
+		inline NM3D_BUFFER* GetBuffer()
 		{
 			return m_pBuff16;
 		}
@@ -198,7 +199,7 @@ namespace Nomad3D
 			*p = c3.GetRGB();
 		}
 #elif defined(NM3D_PIXELFORMAT_888)
-		inline NM3D_BUFFER GetBuffer()
+		inline NM3D_BUFFER* GetBuffer()
 		{
 			return m_pBuff32;
 		}

@@ -18,7 +18,7 @@ namespace Nomad3D
 	{
 	public:
 		CFont8(unsigned char* pBuff):CFont(pBuff){};
-		int DrawChar(int nRow, int nCol, int nIndex, CRGBA color,  NM3D_BUFFER buffer)
+		int DrawChar(int nRow, int nCol, int nIndex, CRGBA color,  NM3D_BUFFER* buffer)
 		{
 			// Return 3 if space, without no drawing and also no erasing
 			if( nIndex == ' ' - FONT8_ASC_START )
@@ -65,7 +65,7 @@ namespace Nomad3D
 				return nWidth+1;
 		}
 		
-		STextPos DrawString(int row,int col,const char* p, NM3D_BUFFER buffer)
+		STextPos DrawString(int row,int col,const char* p, NM3D_BUFFER* buffer)
 		{
 			int nRowSpace=ROW_SPACE; // Line space
 			int nColSpace=COL_SPACE; // Column space

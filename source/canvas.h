@@ -3,8 +3,6 @@
 
 #include "config.h"
 #include "platform.h"
-#include <SDL2/SDL.h>
-
 
 namespace Nomad3D
 {
@@ -13,13 +11,13 @@ namespace Nomad3D
     public:
         CCanvas();
         virtual ~CCanvas();
-        NM3D_BUFFER GetCanvas();
+        NM3D_BUFFER* GetCanvas();
         int GetCanvasPitch();
         void ClearCanvas();
         virtual void BitBlt();
 
     protected:
-        NM3D_BUFFER m_pCanvas;
+        NM3D_BUFFER* m_pCanvas;
     };
 }
 

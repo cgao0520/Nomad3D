@@ -241,7 +241,7 @@ namespace Nomad3D
 	{
 		if(!Cohen_ClipLine(x1,y1,x2,y2))
 			return;
-		NM3D_BUFFER buffer=GetBuffer();
+		NM3D_BUFFER* buffer = GetBuffer();
 		CRGB clr = m_rgba[0];
 		int  x, y;
 		int  dx, dy;

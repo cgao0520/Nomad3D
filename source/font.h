@@ -42,7 +42,7 @@ namespace Nomad3D
 		virtual ~CFont(){};
 		//////////////////////////////////////////////////////////////////////////
 		virtual inline int DrawChar(int nRow, int nCol, int nIndex, CRGBA color,  unsigned short* buffer) = 0;
-		virtual STextPos DrawString(int row,int col,const char* p, NM3D_BUFFER buffer)=0;
+		virtual STextPos DrawString(int row,int col,const char* p, NM3D_BUFFER* buffer)=0;
 		inline void ResetPos()
 		{
 			m_CurTextPos.row = m_CurTextPos.col = 0;

@@ -42,8 +42,9 @@ $(BUILD_DIR)/%.o: %.cpp
 # Clean up
 clean:
 	@echo "Cleaning up..."
-	rm -rf $(BUILD_DIR)
-	rm -f demo/log.html
+	@rm -rf $(BUILD_DIR)
+	@rm -f demo/log.html
+	@echo "Cleaning up completed"
 
 # Rebuild
 rebuild:

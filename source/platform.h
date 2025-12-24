@@ -60,9 +60,9 @@ typedef uint32_t u32;
 #endif
 
 #if defined(NM3D_PIXELFORMAT_555) || defined(NM3D_PIXELFORMAT_565)
-#define NM3D_BUFFER	unsigned short*
+#define NM3D_BUFFER	unsigned short
 #else
-#define NM3D_BUFFER unsigned int*
+#define NM3D_BUFFER unsigned int
 #endif
 
 #endif // PLATFORM_H_D7F9C56E_6233_450b_9BEA_74C6DBA8F659

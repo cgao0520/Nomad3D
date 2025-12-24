@@ -1,6 +1,6 @@
-#include "nomad3d.h"
 #include "canvas.h"
-#include <stdlib.h>
+#include <cstring>
+#include <cassert>
 
 namespace Nomad3D
 {
@@ -13,13 +13,13 @@ namespace Nomad3D
     {
         if (m_pCanvas) // in case not freed in subclass
         {
-            free(m_pCanvas);
+            delete(m_pCanvas);
         }
         
         m_pCanvas = NULL;
     }
 
-    NM3D_BUFFER CCanvas::GetCanvas()
+    NM3D_BUFFER* CCanvas::GetCanvas()
     {
         return m_pCanvas;
     }
