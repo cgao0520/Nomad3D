@@ -5,7 +5,7 @@
 #if !defined(_TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_)
 #define _TIMER_H__DAA71C44_ECE5_415A_8850_13C0783927B8__INCLUDED_
 
-#if defined(NM3D_PLATFORM_LINUX)
+#if defined(NM3D_PLATFORM_SDL)
 #include <time.h>
 #endif
 
@@ -13,7 +13,7 @@ namespace Nomad3D
 {
 #if defined(NM3D_PLATFORM_WIN32)
 #include "../platform/win32/timer.h"
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 
     class CTimer
     {

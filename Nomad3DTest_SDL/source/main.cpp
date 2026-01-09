@@ -29,6 +29,7 @@ CVector3 up(0,1,0);
 
 CSDLCanvas canvas;
 
+
 void GameInit()
 {
     canvas.Init();

@@ -1,8 +1,12 @@
 #ifndef CONFIG_H_ACCA488F_F977_4b19_8872_2701DE0BD0AB
 #define CONFIG_H_ACCA488F_F977_4b19_8872_2701DE0BD0AB
 
-
-#define NM3D_PLATFORM_LINUX						// current platform
+////// List of platforms //////
+// NM3D_PLATFORM_SDL							// for Linux and Mac OS
+// NM3D_PLATFORM_WIN32
+// NM3D_PLATFORM_NDS
+// Define the current system to build
+#define NM3D_PLATFORM_SDL						// current platform, Mac OS also uses this name
 
 #define NM3D_WINDOW_WIDTH						1024 // window width
 #define NM3D_WINDOW_HEIGHT						768 // window height

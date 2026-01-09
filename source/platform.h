@@ -33,7 +33,7 @@
 #define WORD		unsigned short
 #define FAR
 
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 
 #include <stdint.h>
 

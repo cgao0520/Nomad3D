@@ -6,7 +6,7 @@ LDFLAGS  	:= `sdl2-config --libs`
 TARGET   	:= demo
 BUILD_DIR 	:= build
 
-PROJ_DIR 	:= ./Nomad3DTest_Linux
+PROJ_DIR 	:= ./Nomad3DTest_SDL
 NOMAD3D_DIR	:= ./source
 CXXFLAGS 	+= -I$(PROJ_DIR)/include \
 			   -I$(NOMAD3D_DIR)
@@ -43,10 +43,14 @@ $(BUILD_DIR)/%.o: %.cpp
 clean:
 	@echo "Cleaning up..."
 	@rm -rf $(BUILD_DIR)
-	@rm -f demo/log.html
+	@rm -f demo/log.html log.html
 	@echo "Cleaning up completed"
 
 # Rebuild
 rebuild:
 	$(MAKE) clean
-	$(MAKE) 
+	$(MAKE)
+
+# Run demo
+run:
+	cd demo && ./demo

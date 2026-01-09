@@ -9,7 +9,7 @@
 
 #if defined(NM3D_PLATFORM_WIN32)
 #include <ctime>
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 #include <time.h>
 #else
 #error "This platform doesn't support log!"
@@ -52,7 +52,7 @@ bool CLog::Init(const char * szFile)
 #if defined(NM3D_PLATFORM_WIN32)
     _strtime(caTime);
     _strdate(caDate);
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 	time_t now = time(NULL);
 	struct tm *tm_info = localtime(&now);
 	strftime(caTime, sizeof(caTime), "%H:%M:%S", tm_info);
@@ -79,7 +79,7 @@ void CLog::Write(const char * szColor, const char * szFmt, ...)
 	va_end(va);
 #if defined(NM3D_PLATFORM_WIN32)
 	_strtime(caTime);
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 	time_t now = time(NULL);
 	struct tm *tm_info = localtime(&now);
 	strftime(caTime, sizeof(caTime), "%H:%M:%S", tm_info);

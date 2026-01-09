@@ -3,11 +3,11 @@
 
 #include "platform.h"
 
-#if defined(NM3D_PLATFORM_WIN32) || defined(NM3D_PLATFORM_LINUX)
+#if defined(NM3D_PLATFORM_WIN32) || defined(NM3D_PLATFORM_SDL)
 	typedef	float n3dFloat;
 #elif defined(NM3D_PLATFORM_NDS)
 	typedef float n3dFloat;
-#elif defined(NM3D_PLATFORM_WIN32_64) || defined(NM3D_PLATFORM_LINUX_64)
+#elif defined(NM3D_PLATFORM_WIN32_64) || defined(NM3D_PLATFORM_SDL_64)
 	typedef double n3dFloat;
 #endif
 

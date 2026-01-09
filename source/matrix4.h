@@ -495,8 +495,8 @@ namespace Nomad3D
 		rmm[3][2] = m_[3][0]*mm[0][2] + m_[3][1]*mm[1][2] + m_[3][2]*mm[2][2] + m_[3][3]*mm[3][2];
 		rmm[3][3] = m_[3][0]*mm[0][3] + m_[3][1]*mm[1][3] + m_[3][2]*mm[2][3] + m_[3][3]*mm[3][3];
 		
-		//memcpy(m_, rmm, sizeof(m_));
-		std::copy(&rmm[0][0], &rmm[0][0] + 16, &m_[0][0]);
+		memcpy(m_, rmm, sizeof(m_));
+		//std::copy(&rmm[0][0], &rmm[0][0] + 16, &m_[0][0]);
 		
 		return *this;
 	}

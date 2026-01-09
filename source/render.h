@@ -49,7 +49,7 @@ namespace Nomad3D
 		}
 	}
 
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 
 	inline void MemSet16(void *dest, uint16_t data, int count)
 	{
@@ -114,7 +114,7 @@ namespace Nomad3D
 		}
 		CDIB	m_dib;
 		HDC		m_dc;
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 		CCanvas*		m_pCanvas;
 #elif defined(NM3D_PLATFORM_NDS)
 		unsigned short* frontBuffer = (unsigned short*)(0x06000000);

@@ -76,7 +76,7 @@ inline float CQuaternion::GetAngle() const
 //-------------------------------------------------------------
 inline CVector3 CQuaternion::GetAxis()
 {
-	float sa = 1/Sqrt(1 - SQU(m_fQuat[4]));
+	float sa = 1/Sqrt(1 - SQU(m_fQuat[3]));
 	return CVector3(m_fQuat[0] * sa, m_fQuat[1] * sa, m_fQuat[2] * sa);
 }
 

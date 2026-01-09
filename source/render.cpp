@@ -37,7 +37,7 @@ namespace Nomad3D
 		//m_dib.Create
 #endif
 		m_pBuff = m_dib.GetBits();
-#elif defined (NM3D_PLATFORM_LINUX)
+#elif defined (NM3D_PLATFORM_SDL)
 		//m_pBuff = (unsigned char*)m_canvas.GetCanvas();
 #elif defined(NM3D_PLATFORM_NDS)
 		//u16* frontBuffer = (u16*)(0x06000000);
@@ -134,7 +134,7 @@ namespace Nomad3D
 	{
 #if defined(NM3D_PLATFORM_WIN32)
 		m_dib.BitBlt(m_dc,0,0,NM3D_WINDOW_WIDTH,NM3D_WINDOW_HEIGHT,0,0);
-#elif defined(NM3D_PLATFORM_LINUX)
+#elif defined(NM3D_PLATFORM_SDL)
 		m_pCanvas->BitBlt();
 #elif defined(NM3D_PLATFORM_NDS)
 		unsigned char* temp = backBuffer;

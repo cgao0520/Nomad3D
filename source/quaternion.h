@@ -31,9 +31,9 @@ namespace Nomad3D
 	//-------------------------------------------------------------
 	class CQuaternion
 	{
-		friend CVector3;
+		friend class CVector3;
 		//friend CMatrix3X3;
-		friend CMatrix4;
+		friend class CMatrix4;
 		
 	public:
 		
